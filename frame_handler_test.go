@@ -38,6 +38,15 @@ func (m *ErrorReadWriter) Write(pkt []byte) (int, error) {
 
 }
 
+type hooks struct{}
+
+func (m hooks) PostRecvFrame(in []byte) ([]byte, error) {
+	return in, nil
+}
+func (m hooks) PostSendFrame([]byte) {
+
+}
+
 func TestFrameHandler_recv(t *testing.T) {
 	type args struct {
 		writer io.ReadWriter
@@ -61,9 +70,10 @@ func TestFrameHandler_recv(t *testing.T) {
 			wantErr: false,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := gbt32960.NewFrameHandler(tt.args.writer, hooks)
 			for _, v := range tt.want {
 				fr, err := fh.Recv(context.Background())
 				require.Equal(t, tt.wantErr, err != nil, err)
@@ -93,9 +103,10 @@ func TestFrameHandler_recvErr(t *testing.T) {
 			wantErr: true,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := gbt32960.NewFrameHandler(tt.args.writer, hooks)
 			fr, err := fh.Recv(context.Background())
 			require.Equal(t, tt.wantErr, err != nil, err)
 			require.Equal(t, gbt32960.Frame(tt.want), fr)
@@ -130,10 +141,11 @@ func TestFrameHandler_send(t *testing.T) {
 			wantErr: false,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			writer := bytes.NewBuffer([]byte{})
-			fh := gbt32960.NewFrameHandler(writer)
+			fh := gbt32960.NewFrameHandler(writer, hooks)
 			err := fh.Send(tt.args.frame)
 			require.Equal(t, tt.wantErr, err != nil, err)
 			require.Equal(t, tt.want, writer.Bytes())
@@ -173,9 +185,10 @@ func TestFrameHandler_sendErr(t *testing.T) {
 			wantErr: true,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := gbt32960.NewFrameHandler(tt.args.writer, hooks)
 			err := fh.Send(tt.args.frame)
 			require.Equal(t, tt.wantErr, err != nil, err)
 		})

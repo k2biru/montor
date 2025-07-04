@@ -9,22 +9,28 @@ import (
 	"github.com/pkg/errors"
 )
 
+type frameHandlerHooks interface {
+	PostRecvFrame([]byte) ([]byte, error)
+	PostSendFrame([]byte)
+}
 type Frame []byte
 type FrameHandler interface {
 	Recv(ctx context.Context) (Frame, error)
 	Send(Frame) error
 }
 
-func NewFrameHandler(buffer io.ReadWriter) FrameHandler {
+func NewFrameHandler(buffer io.ReadWriter, hooks frameHandlerHooks) FrameHandler {
 	return &frameHandler{
 		rbuf:   bufio.NewReader(buffer),
 		writer: buffer,
+		hooks:  hooks,
 	}
 }
 
 type frameHandler struct {
 	rbuf   *bufio.Reader
 	writer io.Writer
+	hooks  frameHandlerHooks
 }
 
 func (m *frameHandler) Recv(ctx context.Context) (Frame, error) {
@@ -32,14 +38,12 @@ func (m *frameHandler) Recv(ctx context.Context) (Frame, error) {
 	buffer := make([]byte, 1)
 
 	// read header
-
 	index := 0
 
-	// lookupCommand := generalAction()
 	lengthBuff := make([]byte, 0, 2)
 	expectedLength := 0
 	startByte := 2
-	/////////////
+	// read one by one
 	for {
 		_, err := m.rbuf.Read(buffer)
 		if err != nil {
@@ -55,7 +59,7 @@ func (m *frameHandler) Recv(ctx context.Context) (Frame, error) {
 		rawBuf = append(rawBuf, buffer[0])
 		switch index {
 		case 21:
-			// get expexted length
+			// get expected length
 			lengthBuff = lengthBuff[:0]
 			lengthBuff = append(lengthBuff, buffer...)
 		case 22:
@@ -65,10 +69,10 @@ func (m *frameHandler) Recv(ctx context.Context) (Frame, error) {
 		if index > 22 {
 			expectedLength--
 			if expectedLength <= 0 {
-				// reset buffer
-				// log.Debug().Int("frame_len", len(rawBuf)).
-				// 	Hex("frame", rawBuf).
-				// 	Msg("Recv frame")
+				rawBuf, err := m.hooks.PostRecvFrame(rawBuf)
+				if err != nil {
+					return nil, err
+				}
 				return rawBuf, nil
 			}
 		}
@@ -95,9 +99,6 @@ func (m *frameHandler) Send(frame Frame) error {
 
 		pkt = pkt[n:] // Haven't finished all the data, write again
 	}
-	// log.Debug().
-	// 	Int("frame_len", len(frame)).
-	// 	Hex("frame_payload", frame).
-	// 	Msg("Sent frame.")
+	m.hooks.PostSendFrame(frame)
 	return nil
 }

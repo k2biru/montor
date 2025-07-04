@@ -15,21 +15,24 @@ var (
 	ErrActiveClose  = errors.New("Active close")
 )
 
+type packetCodecHooks interface {
+	Decrypt(encType uint8, vin string, pkt []byte) ([]byte, error)
+}
 type PacketCodec interface {
 	Decode([]byte) (*models.PacketData, error)
 	Encode(models.GBT32960Msg) ([]byte, error)
 }
 
-func NewPacketCodec(coderOpt ProcessOps) PacketCodec {
+func NewPacketCodec(hooks packetCodecHooks) PacketCodec {
 	return &packetCodec{
-		timeNow:  time.Now,
-		coderOpt: coderOpt,
+		timeNow: time.Now,
+		hooks:   hooks,
 	}
 }
 
 type packetCodec struct {
-	timeNow  func() time.Time
-	coderOpt ProcessOps
+	timeNow func() time.Time
+	hooks   packetCodecHooks
 }
 
 func (m packetCodec) genVerifier(pkt []byte) []byte {
@@ -84,10 +87,10 @@ func (m *packetCodec) Decode(payload []byte) (*models.PacketData, error) {
 
 	// post processor for decrypt
 	if pd.Header.Encription != models.EncryptNone {
-		if m.coderOpt == nil {
+		if m.hooks == nil {
 			return nil, errors.Wrap(models.ErrUnset, "Decrypt not set")
 		}
-		pd.Body, err = m.coderOpt.Decrypt(pd.Header.Encription, pd.Header.VIN, pkt[pd.Header.Idx:])
+		pd.Body, err = m.hooks.Decrypt(pd.Header.Encription, pd.Header.VIN, pkt[pd.Header.Idx:])
 		if err != nil {
 			return nil, errors.Wrap(err, "Fail to decrypt packet")
 		}

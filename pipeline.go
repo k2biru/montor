@@ -20,7 +20,7 @@ type Pipeline interface {
 
 func NewPipeline(conn net.Conn, c Component) Pipeline {
 	return &pipeline{
-		fh: NewFrameHandler(conn),
+		fh: NewFrameHandler(conn, c.GetProcessOption()),
 		pc: NewPacketCodec(c.GetProcessOption()),
 		mp: NewProcessor(c.GetProcessOption()),
 	}
