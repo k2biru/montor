@@ -69,6 +69,9 @@ type EnergyStorageSys struct {
 }
 
 func (m *EnergyStorageSys) Decode(pkt []byte, idx *int) error {
+	if len(pkt) < *idx {
+		return nil
+	}
 	size := hex.ReadByte(pkt, idx)
 	m.Coding = hex.ReadByte(pkt, idx)
 	codingSize := int(size * m.Coding)
