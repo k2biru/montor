@@ -1,4 +1,4 @@
-package gbt32960_test
+package montor_test
 
 import (
 	"bytes"
@@ -6,11 +6,10 @@ import (
 	"errors"
 	"io"
 
-	"github.com/k2biru/montor/codec/hex"
-
 	"testing"
 
-	gbt32960 "github.com/k2biru/montor"
+	"github.com/k2biru/montor"
+	"github.com/k2biru/montor/codec/hex"
 	"github.com/stretchr/testify/require"
 )
 
@@ -38,6 +37,15 @@ func (m *ErrorReadWriter) Write(pkt []byte) (int, error) {
 
 }
 
+type hooks struct{}
+
+func (m hooks) PostRecvFrame(in []byte) ([]byte, error) {
+	return in, nil
+}
+func (m hooks) PostSendFrame([]byte) {
+
+}
+
 func TestFrameHandler_recv(t *testing.T) {
 	type args struct {
 		writer io.ReadWriter
@@ -61,13 +69,14 @@ func TestFrameHandler_recv(t *testing.T) {
 			wantErr: false,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := montor.NewFrameHandler(tt.args.writer, hooks)
 			for _, v := range tt.want {
 				fr, err := fh.Recv(context.Background())
 				require.Equal(t, tt.wantErr, err != nil, err)
-				require.Equal(t, gbt32960.Frame(v), fr)
+				require.Equal(t, montor.Frame(v), fr)
 			}
 		})
 	}
@@ -93,19 +102,20 @@ func TestFrameHandler_recvErr(t *testing.T) {
 			wantErr: true,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := montor.NewFrameHandler(tt.args.writer, hooks)
 			fr, err := fh.Recv(context.Background())
 			require.Equal(t, tt.wantErr, err != nil, err)
-			require.Equal(t, gbt32960.Frame(tt.want), fr)
+			require.Equal(t, montor.Frame(tt.want), fr)
 		})
 	}
 }
 
 func TestFrameHandler_send(t *testing.T) {
 	type args struct {
-		frame gbt32960.Frame
+		frame montor.Frame
 	}
 	tests := []struct {
 		name    string
@@ -130,10 +140,11 @@ func TestFrameHandler_send(t *testing.T) {
 			wantErr: false,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			writer := bytes.NewBuffer([]byte{})
-			fh := gbt32960.NewFrameHandler(writer)
+			fh := montor.NewFrameHandler(writer, hooks)
 			err := fh.Send(tt.args.frame)
 			require.Equal(t, tt.wantErr, err != nil, err)
 			require.Equal(t, tt.want, writer.Bytes())
@@ -143,7 +154,7 @@ func TestFrameHandler_send(t *testing.T) {
 
 func TestFrameHandler_sendErr(t *testing.T) {
 	type args struct {
-		frame  gbt32960.Frame
+		frame  montor.Frame
 		writer io.ReadWriter
 	}
 	tests := []struct {
@@ -173,9 +184,10 @@ func TestFrameHandler_sendErr(t *testing.T) {
 			wantErr: true,
 		},
 	}
+	hooks := &hooks{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fh := gbt32960.NewFrameHandler(tt.args.writer)
+			fh := montor.NewFrameHandler(tt.args.writer, hooks)
 			err := fh.Send(tt.args.frame)
 			require.Equal(t, tt.wantErr, err != nil, err)
 		})

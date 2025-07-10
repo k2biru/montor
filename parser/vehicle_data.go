@@ -145,7 +145,7 @@ func gearGear() *Parser[uint8] {
 		name: "gear",
 		v:    0,
 		lookup: map[uint8]string{
-			0b0000: "netral",
+			0b0000: "neutral",
 			0b0001: "1st",
 			0b0010: "2nd",
 			0b0011: "3rd",

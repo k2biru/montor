@@ -24,7 +24,7 @@ func (m *Parameters) Decode(pkt []byte, idx *int) error {
 			return errors.Wrapf(ErrDecodeMsg, "unknow report 0x%02x", id)
 		}
 		// generate item
-		val := lt.generateValue()
+		val := lt.GenerateValue()
 		// decode item
 		switch val.(type) {
 		// case uint32: // no DWORD
@@ -34,14 +34,14 @@ func (m *Parameters) Decode(pkt []byte, idx *int) error {
 		case uint8:
 			val = hex.ReadByte(pkt, idx)
 		case []uint8:
-			length, ok := (*m)[lt.lenID].(uint8)
+			length, ok := (*m)[lt.LenID].(uint8)
 			if !ok {
-				return errors.Wrapf(ErrDecodeMsg, "invalid id 0x%02x ", lt.lenID)
+				return errors.Wrapf(ErrDecodeMsg, "invalid id 0x%02x ", lt.LenID)
 			}
 			val = hex.ReadBytes(pkt, idx, int(length))
 		case string:
 			// read string using fixed length
-			val = hex.ReadString(pkt, idx, int(lt.fixedLen))
+			val = hex.ReadString(pkt, idx, int(lt.FixedLen))
 			// default:
 			// 	return errors.Wrapf(ErrDecodeMsg, " unknow type of 0x%02x", id)
 		}
@@ -64,12 +64,12 @@ func (m *Parameters) encodeItem(id uint8, v any) (pkt []byte, err error) {
 		pktVal = hex.WriteByte(pktVal, vv)
 	case []uint8:
 		length := uint8(len(vv))
-		pkt, _ = m.encodeItem(lt.lenID, length)
+		pkt, _ = m.encodeItem(lt.LenID, length)
 
 		pktVal = hex.WriteBytes(pktVal, vv)
 	case string:
 		// write string using fixed length
-		pktVal = hex.WriteString(pktVal, vv, int(lt.fixedLen))
+		pktVal = hex.WriteString(pktVal, vv, int(lt.FixedLen))
 
 	default:
 		return pkt, errors.Wrapf(ErrDecodeMsg, " unknow type of 0x%02x", id)
@@ -82,8 +82,8 @@ func (m *Parameters) encodeItem(id uint8, v any) (pkt []byte, err error) {
 func (m *Parameters) deleteUnused() {
 	// delete length key
 	for _, v := range paramLookup {
-		if v.lenID != 0 {
-			delete(*m, v.lenID)
+		if v.LenID != 0 {
+			delete(*m, v.LenID)
 		}
 	}
 }
@@ -95,7 +95,7 @@ func (m Parameters) length() int {
 	// length current
 	length := len(m)
 	for key := range m {
-		if x, ok := paramLookup[key]; ok && x.lenID != 0x00 {
+		if x, ok := paramLookup[key]; ok && x.LenID != 0x00 {
 			length++
 		}
 	}
@@ -126,7 +126,7 @@ func (m Parameters) Add(id uint8, val any) error {
 		return ErrInvalidID
 	}
 	inputType := reflect.TypeOf(val)
-	generatedType := reflect.TypeOf(tb.generateValue())
+	generatedType := reflect.TypeOf(tb.GenerateValue())
 	if inputType != generatedType {
 		return errors.Wrapf(ErrMissmatch,
 			"at id 0x%02x expect %s got %s", id, generatedType, inputType)
@@ -166,73 +166,68 @@ type GeneralParameter interface {
 	GetID() uint8
 }
 
-type paramProperties struct {
-	generateValue func() any
-	lenID         uint8
-	fixedLen      uint8
+type ParamProperties struct {
+	GenerateValue func() any // value generator return []byte{}, string(""), uint8, or uint16
+	LenID         uint8      // length of value from another id for string / []byte value
+	FixedLen      uint8      // fixed length of value for string / []byte value
 }
 
-var paramLookup = map[uint8]paramProperties{
+var paramLookup = map[uint8]ParamProperties{
 	0x01: { // waktu penyimpanan lokal
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x02: { // waktu pelaporan default
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x03: { // waktu pelaporan saat alarm
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x04: { // panjang platform domain 0x05
-		generateValue: func() any { return uint8(0) },
+		GenerateValue: func() any { return uint8(0) },
 	},
 	0x05: { // domain  platform
-		generateValue: func() any { return []byte{} },
-		lenID:         0x04,
+		GenerateValue: func() any { return []byte{} },
+		LenID:         0x04,
 	},
 	0x06: { // port
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x07: { // versi hw
-		generateValue: func() any { return string("") },
-		fixedLen:      5,
+		GenerateValue: func() any { return string("") },
+		FixedLen:      5,
 	},
 	0x08: { // versi sw
-		generateValue: func() any { return string("") },
-		fixedLen:      5,
+		GenerateValue: func() any { return string("") },
+		FixedLen:      5,
 	},
 	0x09: { // waktu HB
-		generateValue: func() any { return uint8(0) },
+		GenerateValue: func() any { return uint8(0) },
 	},
 	0x0A: { // terminal respose timeout
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x0B: { // platform response timeout
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x0C: { // interval between login
-		generateValue: func() any { return uint8(0) },
+		GenerateValue: func() any { return uint8(0) },
 	},
 	0x0D: { // panjang public domain 0x0F
-		generateValue: func() any { return uint8(0) },
+		GenerateValue: func() any { return uint8(0) },
 	},
 	0x0E: { // domain public
-		generateValue: func() any { return []byte{} },
-		lenID:         0x0D,
+		GenerateValue: func() any { return []byte{} },
+		LenID:         0x0D,
 	},
 	0x0F: { // port public
-		generateValue: func() any { return uint16(0) },
+		GenerateValue: func() any { return uint16(0) },
 	},
 	0x10: { // monitoring
-		generateValue: func() any { return uint8(0) },
+		GenerateValue: func() any { return uint8(0) },
 	},
-	0x80: { // can report
-		generateValue: func() any { return uint16(0) },
-	},
-	0x81: { // Whether the full CAN is uploaded, 0x01 indicates yes, 0x02 indicates no,
-		generateValue: func() any { return uint8(0) },
-	},
-	0x86: { // tspID
-		generateValue: func() any { return string("") },
-		fixedLen:      32,
-	},
+}
+
+// set custom parameter lookup for param decoder
+func SetParameterPropertiesLookup(id uint8, properties ParamProperties) {
+	paramLookup[id] = properties
 }
