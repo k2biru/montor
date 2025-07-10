@@ -1,28 +1,28 @@
-package gbt32960
+package montor
 
 import (
 	"context"
-	"errors"
-	"io"
 	"net"
 
 	"github.com/k2biru/montor/models"
 )
-
-type Component interface {
-	GetProcessOption() ProcessOps
-}
 
 type Pipeline interface {
 	ProcessRead(ctx context.Context) error
 	ProcessWrite(ctx context.Context, processData *models.ProcessData) error
 }
 
-func NewPipeline(conn net.Conn, c Component) Pipeline {
+type PipeHooks interface {
+	ProcesssHooks
+	PacketCodecHooks
+	FrameHandlerHooks
+}
+
+func NewPipeline(conn net.Conn, po PipeHooks) Pipeline {
 	return &pipeline{
-		fh: NewFrameHandler(conn),
-		pc: NewPacketCodec(c.GetProcessOption()),
-		mp: NewProcessor(c.GetProcessOption()),
+		fh: NewFrameHandler(conn, po),
+		pc: NewPacketCodec(po),
+		mp: NewProcessor(po),
 	}
 }
 
@@ -41,18 +41,11 @@ func (m *pipeline) ProcessWrite(ctx context.Context, processData *models.Process
 		return err
 	}
 
-	if err := m.fh.Send(pkt); err != nil {
-		// log.Warn().Err(err).
-		// 	Msg("Failed to send dashboard frame")
-	}
-	return nil
+	return m.fh.Send(pkt)
 }
 func (m *pipeline) ProcessRead(ctx context.Context) error {
 	pkt, err := m.fh.Recv(ctx)
 	if err != nil {
-		if errors.Is(err, io.EOF) {
-			return nil // EOF, stop read buffer
-		}
 		return err
 	}
 
@@ -71,9 +64,5 @@ func (m *pipeline) ProcessRead(ctx context.Context) error {
 		return err
 	}
 
-	if err := m.fh.Send(pkt); err != nil {
-		// log.Error().Err(err).
-		// 	Msg("Failed to send dashboard frame")
-	}
-	return nil
+	return m.fh.Send(pkt)
 }

@@ -1,4 +1,4 @@
-package gbt32960
+package montor
 
 import (
 	"context"
@@ -13,27 +13,38 @@ var (
 	ErrMsgInvalidResponseFlag = errors.New("msg response flag invalid")
 	ErrMsgNotSupportted       = errors.New("Msg is not supportted")
 	ErrNotAuthorized          = errors.New("Not authorized")
-	// ErrActiveClose = errors.New("Active close")
 )
+
+type Action struct {
+	IsReply bool
+	GenData func() *models.ProcessData
+	Process func(context.Context, *models.ProcessData) error
+}
+
+type ProcesssHooks interface {
+	GetProcess(id uint8) (*Action, error)
+	PreProcess(context.Context, models.GBT32960Msg) (context.Context, error)
+	PostDecode(models.GBT32960Msg)
+}
 
 type Processor interface {
 	Process(ctx context.Context, pkt *models.PacketData) (*models.ProcessData, error)
 }
 
-func NewProcessor(option ProcessOps) Processor {
+func NewProcessor(hooks ProcesssHooks) Processor {
 	return &processor{
-		procOpt: option,
+		hooks: hooks,
 	}
 }
 
 type processor struct {
-	procOpt ProcessOps
+	hooks ProcesssHooks
 }
 
 func (m *processor) Process(ctx context.Context, pkt *models.PacketData) (*models.ProcessData, error) {
 	//is support?
 	cmdID := pkt.Header.CommandID
-	act, err := m.procOpt.GetProcess(cmdID)
+	act, err := m.hooks.GetProcess(cmdID)
 	if err != nil {
 		return nil, errors.Wrapf(ErrMsgNotSupportted, "commandID 0x%02x", cmdID)
 	}
@@ -57,7 +68,7 @@ func (m *processor) Process(ctx context.Context, pkt *models.PacketData) (*model
 		return nil, errors.Wrap(err, "Fail to decode packet to gbt32960")
 	}
 	// action in post decode
-	m.procOpt.PostDecode(in)
+	m.hooks.PostDecode(in)
 
 	if r := in.GetHeader().Response; !act.IsReply && r != 0xFE {
 		return nil, errors.Wrapf(ErrMsgInvalidResponseFlag, "expect 0xFE got 0x%02x", r)
@@ -72,9 +83,8 @@ func (m *processor) Process(ctx context.Context, pkt *models.PacketData) (*model
 	if process == nil {
 		return data, nil
 	}
-	ctx, err = m.procOpt.PreProcess(ctx, data.Incoming)
+	ctx, err = m.hooks.PreProcess(ctx, data.Incoming)
 	if err != nil {
-		// log.Error().Err(err).Str("vin", data.Incoming.GetHeader().VIN).Msg("Failed preprocess")
 		data.Outgoing.GetHeader().Response = 0x02
 		return data, nil
 	}
