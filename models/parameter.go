@@ -1,6 +1,7 @@
 package models
 
 import (
+	"maps"
 	"reflect"
 
 	"github.com/k2biru/montor/codec/hex"
@@ -228,6 +229,6 @@ var paramLookup = map[uint8]ParamProperties{
 }
 
 // set custom parameter lookup for param decoder
-func SetParameterPropertiesLookup(id uint8, properties ParamProperties) {
-	paramLookup[id] = properties
+func SetParameterPropertiesLookup(lookup map[uint8]ParamProperties) {
+	maps.Copy(paramLookup, lookup)
 }
