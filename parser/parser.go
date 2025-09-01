@@ -1,7 +1,14 @@
 package parser
 
 import (
+	"errors"
 	"math"
+)
+
+var (
+	ErrException   = errors.New("excaption")
+	ErrInvalid     = errors.New("invalid")
+	ErrOverMaxSize = errors.New("data is bigger than max allowed")
 )
 
 type ParsableInteger interface {
@@ -48,6 +55,7 @@ func (m *Parser[T]) Parse(val string) *Parser[T] {
 	// log.Error().Err(models.ErrInvalidParse).Str("name", m.name).Str("val", val).Msg("Invalid parse")
 	return m
 }
+
 func NewConvert[T ParsableInteger](name string, val T, unit float64, min, max int, round bool) *Convert[T] {
 	return &Convert[T]{
 		name:  name,
@@ -66,45 +74,33 @@ type Convert[T ParsableInteger] struct {
 	min   int
 	max   int
 	round bool
+	err   error
 }
 
-func (m *Convert[T]) SetVal(v T) *Convert[T] {
-	m.v = v
-	return m
-}
-
-func (m *Convert[T]) GetVal() T {
-	return m.v
-}
-
-func (m Convert[T]) Calculate() int {
-	fError := func(cause string) {
-		// log.Warn().Err(models.ErrInvalidConvert).Str("cause", cause).Str("name", m.name).Any("val", m.v).Msg("Failed convert")
-	}
+func (m *Convert[T]) Error() error {
 	var exception, invalid T
 	exception = 0
 	invalid = 0
 	exception -= 2
 	invalid -= 1
-	if m.v == exception {
-		fError("exception")
-		return 0
-	} else if m.v == invalid {
-		fError("invalid")
-		return 0
-	}
-	temp := float64(m.v)*m.unit + float64(m.min)
-	result := int(temp)
-	if m.round {
-		result = int(math.Round(temp))
-	}
-	if result > m.max {
-		// log.Warn().Err(models.ErrInvalidConvert).Str("name", m.name).
-		// 	Any("val", m.v).Int("result", result).Any("max", m.max).Msg("Value maxed")
-		return result
-	}
 
-	return result
+	switch m.v {
+	case exception:
+		return ErrException
+	case invalid:
+		return ErrInvalid
+	}
+	return nil
+}
+
+func (m *Convert[T]) SetVal(v T) *Convert[T] {
+	m.v = v
+	m.err = m.Error()
+	return m
+}
+
+func (m *Convert[T]) GetVal() T {
+	return m.v
 }
 
 func (m *Convert[T]) Convert(val int) *Convert[T] {
@@ -124,33 +120,20 @@ func (m *Convert[T]) Convert(val int) *Convert[T] {
 	return m
 }
 
-func (m Convert[T]) Calculate2() *calculateValue {
-	fError := func(cause string) {
-		// log.Warn().Err(models.ErrInvalidConvert).Str("cause", cause).Str("name", m.name).Any("val", m.v).Msg("Failed convert")
-	}
+func (m Convert[T]) Calculate() *calculateValue {
 	value := &calculateValue{
 		val:   0,
 		round: m.round,
+		err:   m.Error(),
 	}
-	var exception, invalid T
-	exception = 0
-	invalid = 0
-	exception -= 2
-	invalid -= 1
-	switch m.v {
-	case exception:
-		fError("exception")
+	if value.err != nil {
 		return value
-	case invalid:
-		fError("invalid")
-		return value
+	}
 
-	}
 	temp := float64(m.v)*m.unit + float64(m.min)
 	value.val = temp
 	if result := int(temp); result > m.max {
-		// log.Warn().Err(models.ErrInvalidConvert).Str("name", m.name).
-		// 	Any("val", m.v).Int("result", result).Any("max", m.max).Msg("Value maxed")
+		value.err = ErrOverMaxSize
 		value.val = float64(m.max)
 	}
 	return value
@@ -159,6 +142,11 @@ func (m Convert[T]) Calculate2() *calculateValue {
 type calculateValue struct {
 	val   float64
 	round bool
+	err   error
+}
+
+func (m calculateValue) Error() error {
+	return m.err
 }
 
 func (m calculateValue) AsInt() int {

@@ -16,9 +16,9 @@ var (
 )
 
 type Action struct {
-	IsReply bool
-	GenData func() *models.ProcessData
-	Process func(context.Context, *models.ProcessData) error
+	ForceProcess bool
+	GenData      func() *models.ProcessData
+	Process      func(context.Context, *models.ProcessData) error
 }
 
 type ProcesssHooks interface {
@@ -70,22 +70,28 @@ func (m *processor) Process(ctx context.Context, pkt *models.PacketData) (*model
 	// action in post decode
 	m.hooks.PostDecode(in)
 
-	if r := in.GetHeader().Response; !act.IsReply && r != 0xFE {
-		return nil, errors.Wrapf(ErrMsgInvalidResponseFlag, "expect 0xFE got 0x%02x", r)
+	// prepare outgoing msg
+	prepareReply(data)
+
+	// preprocess
+	ctx, err = m.hooks.PreProcess(ctx, data.Incoming)
+	if err != nil {
+		if data.Outgoing == nil || data.Outgoing.GetHeader() == nil {
+			return data, nil
+		}
+		data.Outgoing.GetHeader().Response = 0x02
+		return data, nil
 	}
 
-	// prepare outgoing msg
-	if !act.IsReply {
-		prepareReply(data)
+	// should be process?
+	if responseCode := in.GetHeader().Response; responseCode != 0xFE &&
+		!act.ForceProcess {
+		return nil, errors.Wrapf(ErrMsgInvalidResponseFlag, "expect 0xFE got 0x%02x with force %t", responseCode, act.ForceProcess)
 	}
+
 	// process
 	process := act.Process
 	if process == nil {
-		return data, nil
-	}
-	ctx, err = m.hooks.PreProcess(ctx, data.Incoming)
-	if err != nil {
-		data.Outgoing.GetHeader().Response = 0x02
 		return data, nil
 	}
 	err = process(ctx, data)
@@ -111,12 +117,4 @@ func prepareReply(data *models.ProcessData) {
 			reply.Time = at.GetTime()
 		}
 	}
-}
-
-type ChannelGw interface {
-	SendDeviceChannel(id, src string, opt1, opt2 uint16, val any) error
-}
-
-type BroadcastCh interface {
-	SendBroadcastCh(id, src string, opt1, opt2 uint8, val models.GBT32960Msg) error
 }
