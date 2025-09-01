@@ -46,7 +46,7 @@ func FuelCellTemperature() *Convert[uint8] {
 		v:     value,
 		unit:  1, // 1 /C
 		min:   -40,
-		max:   -210,
+		max:   200,
 		round: true,
 	}
 }
