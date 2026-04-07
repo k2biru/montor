@@ -1,6 +1,7 @@
 package models
 
 import (
+	"maps"
 	"time"
 
 	"github.com/k2biru/montor/codec/hex"
@@ -46,6 +47,7 @@ func (m *Msg80Reply) Copy() GBT32960Msg {
 	header := *m.Header
 	cp := *m
 	cp.Header = &header
+	cp.Parameters = maps.Clone(m.Parameters)
 	return &cp
 }
 func (m Msg80Reply) GetMsgSN() string {
