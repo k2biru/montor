@@ -1,0 +1,3765 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>gbk: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/k2biru/montor/codec/gbk/gbk.go (87.5%)</option>
+				
+				<option value="file1">github.com/k2biru/montor/codec/hex/hex.go (98.0%)</option>
+				
+				<option value="file2">github.com/k2biru/montor/frame_handler.go (100.0%)</option>
+				
+				<option value="file3">github.com/k2biru/montor/models/control.go (100.0%)</option>
+				
+				<option value="file4">github.com/k2biru/montor/models/frame.go (90.0%)</option>
+				
+				<option value="file5">github.com/k2biru/montor/models/header.go (100.0%)</option>
+				
+				<option value="file6">github.com/k2biru/montor/models/msg01.go (94.4%)</option>
+				
+				<option value="file7">github.com/k2biru/montor/models/msg02.go (100.0%)</option>
+				
+				<option value="file8">github.com/k2biru/montor/models/msg03.go (100.0%)</option>
+				
+				<option value="file9">github.com/k2biru/montor/models/msg04.go (100.0%)</option>
+				
+				<option value="file10">github.com/k2biru/montor/models/msg07.go (100.0%)</option>
+				
+				<option value="file11">github.com/k2biru/montor/models/msg80_rcv.go (100.0%)</option>
+				
+				<option value="file12">github.com/k2biru/montor/models/msg80_rpl.go (100.0%)</option>
+				
+				<option value="file13">github.com/k2biru/montor/models/msg81.go (100.0%)</option>
+				
+				<option value="file14">github.com/k2biru/montor/models/msg82.go (100.0%)</option>
+				
+				<option value="file15">github.com/k2biru/montor/models/msg_reply.go (93.8%)</option>
+				
+				<option value="file16">github.com/k2biru/montor/models/msgxx.go (100.0%)</option>
+				
+				<option value="file17">github.com/k2biru/montor/models/parameter.go (98.9%)</option>
+				
+				<option value="file18">github.com/k2biru/montor/models/report_01.go (100.0%)</option>
+				
+				<option value="file19">github.com/k2biru/montor/models/report_02.go (100.0%)</option>
+				
+				<option value="file20">github.com/k2biru/montor/models/report_03.go (100.0%)</option>
+				
+				<option value="file21">github.com/k2biru/montor/models/report_04.go (100.0%)</option>
+				
+				<option value="file22">github.com/k2biru/montor/models/report_05.go (100.0%)</option>
+				
+				<option value="file23">github.com/k2biru/montor/models/report_06.go (100.0%)</option>
+				
+				<option value="file24">github.com/k2biru/montor/models/report_07.go (100.0%)</option>
+				
+				<option value="file25">github.com/k2biru/montor/models/report_08.go (97.9%)</option>
+				
+				<option value="file26">github.com/k2biru/montor/models/report_09.go (97.5%)</option>
+				
+				<option value="file27">github.com/k2biru/montor/models/report_item.go (96.8%)</option>
+				
+				<option value="file28">github.com/k2biru/montor/models/sort.go (100.0%)</option>
+				
+				<option value="file29">github.com/k2biru/montor/models/time.go (97.4%)</option>
+				
+				<option value="file30">github.com/k2biru/montor/packet_codec.go (97.5%)</option>
+				
+				<option value="file31">github.com/k2biru/montor/parser/batteries_temperatures.go (100.0%)</option>
+				
+				<option value="file32">github.com/k2biru/montor/parser/batteries_voltages.go (100.0%)</option>
+				
+				<option value="file33">github.com/k2biru/montor/parser/drive_motor.go (100.0%)</option>
+				
+				<option value="file34">github.com/k2biru/montor/parser/engine.go (100.0%)</option>
+				
+				<option value="file35">github.com/k2biru/montor/parser/extreme.go (100.0%)</option>
+				
+				<option value="file36">github.com/k2biru/montor/parser/fuel_cell.go (100.0%)</option>
+				
+				<option value="file37">github.com/k2biru/montor/parser/location.go (100.0%)</option>
+				
+				<option value="file38">github.com/k2biru/montor/parser/parameter.go (100.0%)</option>
+				
+				<option value="file39">github.com/k2biru/montor/parser/parser.go (100.0%)</option>
+				
+				<option value="file40">github.com/k2biru/montor/parser/vehicle_data.go (100.0%)</option>
+				
+				<option value="file41">github.com/k2biru/montor/pipeline.go (95.0%)</option>
+				
+				<option value="file42">github.com/k2biru/montor/processor.go (97.6%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package gbk
+
+import (
+        "bytes"
+        "io"
+
+        "golang.org/x/text/encoding/simplifiedchinese"
+        "golang.org/x/text/transform"
+)
+
+// GBK UTF-8
+func GBK2UTF8(src []byte) ([]byte, error) <span class="cov8" title="1">{
+        dst, err := io.ReadAll(transform.NewReader(bytes.NewBuffer(src), simplifiedchinese.GBK.NewDecoder()))
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return dst, nil</span>
+}
+
+// UTF-8 GBK
+func UTF82GBK(src []byte) ([]byte, error) <span class="cov8" title="1">{
+        dst, err := io.ReadAll(transform.NewReader(bytes.NewBuffer(src), simplifiedchinese.GBK.NewEncoder()))
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return dst, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package hex
+
+import (
+        "encoding/binary"
+        "encoding/hex"
+        "errors"
+        "log"
+        "strings"
+
+        "github.com/k2biru/montor/codec/gbk"
+)
+
+const (
+        doubeWordLen = 4
+)
+
+// BYTE
+func ReadByte(pkt []byte, idx *int) uint8 <span class="cov8" title="1">{
+        ans := pkt[*idx]
+        *idx++
+        return ans
+}</span>
+
+func WriteByte(pkt []byte, num uint8) []byte <span class="cov8" title="1">{
+        return append(pkt, num)
+}</span>
+
+// WORD
+func ReadWord(pkt []byte, idx *int) uint16 <span class="cov8" title="1">{
+        ans := binary.BigEndian.Uint16(pkt[*idx : *idx+2])
+        *idx += 2
+        return ans
+}</span>
+
+func WriteWord(pkt []byte, num uint16) []byte <span class="cov8" title="1">{
+        numPkt := make([]byte, 2)
+        binary.BigEndian.PutUint16(numPkt, num)
+        return append(pkt, numPkt...)
+}</span>
+
+// DWORD
+func ReadDoubleWord(pkt []byte, idx *int) uint32 <span class="cov8" title="1">{
+        ans := binary.BigEndian.Uint32(pkt[*idx : *idx+4])
+        *idx += doubeWordLen
+        return ans
+}</span>
+
+func WriteDoubleWord(pkt []byte, num uint32) []byte <span class="cov8" title="1">{
+        numPkt := make([]byte, doubeWordLen)
+        binary.BigEndian.PutUint32(numPkt, num)
+        return append(pkt, numPkt...)
+}</span>
+
+// BYTES
+func ReadBytes(pkt []byte, idx *int, n int) []byte <span class="cov8" title="1">{
+        ans := pkt[*idx : *idx+n]
+        *idx += n
+        return ans
+}</span>
+
+func WriteBytes(pkt, arr []byte) []byte <span class="cov8" title="1">{
+        return append(pkt, arr...)
+}</span>
+
+// STRING using GBK encoding
+func ReadString(pkt []byte, idx *int, n int) string <span class="cov8" title="1">{
+        if l := len(pkt); l == 0 || l &lt; n </span><span class="cov8" title="1">{
+                return ""
+        }</span>
+        <span class="cov8" title="1">var data []byte
+        for i := 0; i &lt; n; i++ </span><span class="cov8" title="1">{
+                v := ReadByte(pkt, idx)
+                data = append(data, v)
+        }</span>
+        <span class="cov8" title="1">data, err := gbk.GBK2UTF8(data)
+        if err != nil </span><span class="cov0" title="0">{
+                // should never get here
+                return ""
+        }</span>
+        <span class="cov8" title="1">stopIndex := strings.IndexRune(string(data), '\x00')
+        if stopIndex != -1 </span><span class="cov8" title="1">{
+                data = data[:stopIndex]
+        }</span>
+
+        <span class="cov8" title="1">return string(data)</span>
+}
+
+// STRING
+func WriteString(pkt []byte, str string, n int) []byte <span class="cov8" title="1">{
+        arr, err := gbk.UTF82GBK([]byte(str))
+        if err != nil </span><span class="cov8" title="1">{
+                // should never get here
+                return pkt
+        }</span>
+        <span class="cov8" title="1">strLen := len(arr)
+        if dif := n - strLen; dif &gt; 0 </span><span class="cov8" title="1">{
+                // apend
+                for i := 0; i &lt; dif; i++ </span><span class="cov8" title="1">{
+                        arr = append(arr, 0x00)
+                }</span>
+        } else<span class="cov8" title="1"> if dif &lt; 0 </span><span class="cov8" title="1">{
+                // crop arr
+                arr = arr[:n]
+        }</span>
+        <span class="cov8" title="1">return WriteBytes(pkt, arr)</span>
+}
+
+// tools hex str
+func Str2Byte(src string) []byte <span class="cov8" title="1">{
+        dst, err := hex.DecodeString(src)
+        if err != nil </span><span class="cov8" title="1">{
+                if errors.Is(err, hex.ErrLength) </span><span class="cov8" title="1">{
+                        log.Printf("Source str invalid \"%s\", will ignore extra byte", src)
+                }</span> else<span class="cov8" title="1"> {
+                        log.Print("Fail to transform hex str to byte array")
+                }</span>
+        }
+        <span class="cov8" title="1">return dst</span>
+}
+
+func Byte2Str(src []byte) string <span class="cov8" title="1">{
+        return hex.EncodeToString(src)
+}</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package montor
+
+import (
+        "bufio"
+        "context"
+        "encoding/binary"
+        "io"
+
+        "github.com/pkg/errors"
+)
+
+type FrameHandlerHooks interface {
+        PostRecvFrame([]byte) ([]byte, error)
+        PostSendFrame([]byte)
+}
+type Frame []byte
+type FrameHandler interface {
+        Recv(ctx context.Context) (Frame, error)
+        Send(Frame) error
+}
+
+func NewFrameHandler(buffer io.ReadWriter, hooks FrameHandlerHooks) FrameHandler <span class="cov8" title="1">{
+        return &amp;frameHandler{
+                rbuf:   bufio.NewReader(buffer),
+                writer: buffer,
+                hooks:  hooks,
+        }
+}</span>
+
+type frameHandler struct {
+        rbuf   *bufio.Reader
+        writer io.Writer
+        hooks  FrameHandlerHooks
+}
+
+func (m *frameHandler) Recv(ctx context.Context) (Frame, error) <span class="cov8" title="1">{
+        rawBuf := make([]byte, 0, 225)
+        buffer := make([]byte, 1)
+
+        // read header
+        index := 0
+
+        lengthBuff := make([]byte, 0, 2)
+        expectedLength := 0
+        startByte := 2
+        // read one by one
+        for </span><span class="cov8" title="1">{
+                _, err := m.rbuf.Read(buffer)
+                if err != nil </span><span class="cov8" title="1">{
+                        return nil, errors.Wrap(err, "Fail to read stream to framePayload")
+                }</span>
+
+                // read 2 byte "##"
+                <span class="cov8" title="1">if buffer[0] == 0x23 &amp;&amp; startByte &gt; 0 </span><span class="cov8" title="1">{
+                        startByte--
+                        continue</span>
+                }
+                <span class="cov8" title="1">index++
+                rawBuf = append(rawBuf, buffer[0])
+                switch index </span>{
+                case 21:<span class="cov8" title="1">
+                        // get expected length
+                        lengthBuff = lengthBuff[:0]
+                        lengthBuff = append(lengthBuff, buffer...)</span>
+                case 22:<span class="cov8" title="1">
+                        lengthBuff = append(lengthBuff, buffer...)
+                        expectedLength = int(binary.BigEndian.Uint16(lengthBuff)) + 1</span>
+                }
+                <span class="cov8" title="1">if index &gt; 22 </span><span class="cov8" title="1">{
+                        expectedLength--
+                        if expectedLength &lt;= 0 </span><span class="cov8" title="1">{
+                                rawBuf, err := m.hooks.PostRecvFrame(rawBuf)
+                                if err != nil </span><span class="cov8" title="1">{
+                                        return nil, err
+                                }</span>
+                                <span class="cov8" title="1">return rawBuf, nil</span>
+                        }
+                }
+        }
+}
+
+func (m *frameHandler) Send(frame Frame) error <span class="cov8" title="1">{
+        if len(frame) == 0 </span><span class="cov8" title="1">{
+                // nothing to send
+                return nil
+        }</span>
+        // add start byte
+        <span class="cov8" title="1">pkt := []byte{
+                0x23, 0x23,
+        }
+        pkt = append(pkt, frame...)
+        for </span><span class="cov8" title="1">{
+                n, err := m.writer.Write(pkt)
+                if err != nil </span><span class="cov8" title="1">{
+                        return errors.Wrap(err, "Failed to send payload")
+                }</span> else<span class="cov8" title="1"> if n &gt;= len(pkt) </span><span class="cov8" title="1">{
+                        break</span>
+                }
+                <span class="cov8" title="1">pkt = pkt[n:]</span> // Haven't finished all the data, write again
+        }
+        <span class="cov8" title="1">m.hooks.PostSendFrame(frame)
+        return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package models
+
+import "github.com/k2biru/montor/codec/hex"
+
+type Control uint8
+
+func (m *Control) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        *m = Control(hex.ReadByte(pkt, idx))
+        // todo : support control argument
+        return nil
+}</span>
+func (m *Control) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.GetID())
+        // todo : support control argument
+        // please edit Msg82.Encode if new error added
+        return pkt, err
+}</span>
+func (m Control) GetID() uint8 <span class="cov8" title="1">{
+        return uint8(m)
+}</span>
+
+// func (m *Control) GetParameter() map[string]any {
+//         return nil
+// }
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package models
+
+import (
+        "reflect"
+        "time"
+
+        "github.com/pkg/errors"
+)
+
+type PacketData struct {
+        Header     *MsgHeader
+        Body       []byte
+        VerifyCode uint8
+}
+
+func WriteHeader(m GBT32960Msg, pkt []byte) ([]byte, error) <span class="cov8" title="1">{
+        header := m.GetHeader()
+        if header == nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrEncodeMsg, "header not set of %s", reflect.TypeOf(m))
+        }</span>
+        <span class="cov8" title="1">var err error
+        body := pkt
+        header.BodyLength = uint16(len(body))
+        headerPkt, err := header.Encode()
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return append(headerPkt, body...), nil</span>
+}
+
+type GBT32960Msg interface {
+        Decode(*PacketData) error        // Packet -&gt; GBT32960Msg
+        Encode() (pkt []byte, err error) // GBT32960Msg -&gt; Packet
+        GetHeader() *MsgHeader           // Header
+        Copy() GBT32960Msg
+        GetMsgSN() string
+        // GenOutgoing(incoming GBT32960Msg) error
+}
+type GBT32960MsgTime interface {
+        GetTime() time.Time
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package models
+
+import (
+        "crypto/rsa"
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const (
+        ResponseSuccess        uint8 = 0x01
+        ResponseFailed         uint8 = 0x02
+        ResponseVINDuplicate   uint8 = 0x03
+        ResponseCommandPackage uint8 = 0xFE
+
+        headerLength = 22
+
+        EncryptNone uint8 = 0x01
+        EncryptRSA  uint8 = 0x02
+)
+
+const (
+        VINLength = 17
+)
+
+func GenerateHeader(vin string, cmdID, response uint8) *MsgHeader <span class="cov8" title="1">{
+        return &amp;MsgHeader{
+                VIN:        vin,
+                CommandID:  cmdID,
+                Response:   response,
+                Encription: EncryptNone,
+        }
+}</span>
+
+func GenerateHeaderWithKey(vin string, cmdID, response uint8, rsaPublic *rsa.PublicKey) *MsgHeader <span class="cov8" title="1">{
+        return &amp;MsgHeader{
+                VIN:        vin,
+                CommandID:  cmdID,
+                Response:   response,
+                Encription: EncryptRSA,
+                EncryptKey: rsaPublic,
+        }
+}</span>
+
+func GenerateHeaderWithKeyNoRSA(vin string, cmdID, response uint8, rsaPublic *rsa.PublicKey) *MsgHeader <span class="cov8" title="1">{
+        return &amp;MsgHeader{
+                VIN:        vin,
+                CommandID:  cmdID,
+                Response:   response,
+                Encription: EncryptNone,
+                EncryptKey: rsaPublic,
+        }
+}</span>
+
+type MsgHeader struct {
+        CommandID         uint8           `json:"commandID"`    // command id
+        Response          uint8           `json:"responseFlag"` // command response flag
+        VIN               string          `json:"VIN"`          // 17 char string
+        Encription        uint8           `json:"encription"`   // metode enkripsi
+        BodyLength        uint16          `json:"length"`       // panjang body
+        Idx               int             `json:"-"`            // Read the PACKET Header.
+        TimeCreated       time.Time       `json:"timeCreated"`  // Time msg create
+        EncryptKey        *rsa.PublicKey  `json:"encryptKey"`   // key for encrypt
+        PrivateEncryptKey *rsa.PrivateKey `json:"privateKey"`   // key for encrypt
+}
+
+// Decoding [] byte into a message head structure
+func (m *MsgHeader) Decode(pkt []byte) error <span class="cov8" title="1">{
+        if len(pkt) &lt; headerLength </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">var idx int
+        m.CommandID = hex.ReadByte(pkt, &amp;idx)
+        m.Response = hex.ReadByte(pkt, &amp;idx)
+        m.VIN = hex.ReadString(pkt, &amp;idx, VINLength)
+        m.Encription = hex.ReadByte(pkt, &amp;idx)
+        m.BodyLength = hex.ReadWord(pkt, &amp;idx)
+        m.Idx = idx
+
+        return nil</span>
+}
+
+// Code the message head structure into [] byte
+func (m *MsgHeader) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.CommandID)
+        pkt = hex.WriteByte(pkt, m.Response)
+        pkt = hex.WriteString(pkt, m.VIN, VINLength)
+        pkt = hex.WriteByte(pkt, m.Encription)
+        pkt = hex.WriteWord(pkt, m.BodyLength)
+        return pkt, nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const (
+        ICCIDLength = 20
+)
+
+// Login
+type Msg01 struct {
+        Header               *MsgHeader       `json:"header"`
+        Time                 time.Time        `json:"time"`
+        SerialNumber         uint16           `json:"serialNumber"`
+        ICCID                string           `json:"iccid"`
+        EnerygyStorageSystem EnergyStorageSys `json:"energyStorageSystem"`
+}
+
+func (m *Msg01) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        m.SerialNumber = hex.ReadWord(pkt, &amp;idx)
+        m.ICCID = hex.ReadString(pkt, &amp;idx, ICCIDLength)
+        return m.EnerygyStorageSystem.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg01) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        pkt = hex.WriteWord(pkt, m.SerialNumber)
+        pkt = hex.WriteString(pkt, m.ICCID, ICCIDLength)
+        pkt = hex.WriteBytes(pkt, m.EnerygyStorageSystem.Encode())
+
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg01) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg01) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+
+func (m Msg01) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg01) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+
+type EnergyStorageSys struct {
+        Coding byte
+
+        // todo : create interface for eatch coding
+        Raw []byte
+}
+
+func (m *EnergyStorageSys) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt) &lt; *idx </span><span class="cov0" title="0">{
+                return nil
+        }</span>
+        <span class="cov8" title="1">size := hex.ReadByte(pkt, idx)
+        m.Coding = hex.ReadByte(pkt, idx)
+        codingSize := int(size * m.Coding)
+        m.Raw = hex.ReadBytes(pkt, idx, codingSize)
+        return nil</span>
+}
+
+func (m *EnergyStorageSys) Encode() (pkt []byte) <span class="cov8" title="1">{
+        if m.Coding == 0 </span><span class="cov0" title="0">{
+                return pkt
+        }</span>
+        <span class="cov8" title="1">size := uint8(len(m.Raw) / int(m.Coding))
+        pkt = hex.WriteByte(pkt, size)
+        pkt = hex.WriteByte(pkt, m.Coding)
+        pkt = hex.WriteBytes(pkt, m.Raw)
+        return pkt</span>
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+type Msg02 struct {
+        Header  *MsgHeader `json:"header"`
+        Time    time.Time  `json:"time"`
+        Reports Reports    `json:"reports"`
+}
+
+func (m *Msg02) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        return m.Reports.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg02) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        report, _ := m.Reports.Encode()
+        // report encode never error
+        // if err != nil {
+        //         return nil, err
+        // }
+        pkt = hex.WriteBytes(pkt, report)
+
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg02) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg02) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg02) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg02) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+type Msg03 struct {
+        Header  *MsgHeader `json:"header"`
+        Time    time.Time  `json:"time"`
+        Reports Reports    `json:"reports"`
+}
+
+func (m *Msg03) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        return m.Reports.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg03) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        report, _ := m.Reports.Encode()
+        // report encode never error
+        // if err != nil {
+        //         return nil, err
+        // }
+        pkt = hex.WriteBytes(pkt, report)
+
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg03) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg03) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg03) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg03) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+type Msg04 struct {
+        Header       *MsgHeader `json:"header"`
+        Time         time.Time  `json:"time"`
+        SerialNumber uint16     `json:"serialNumber"`
+}
+
+func (m *Msg04) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        m.SerialNumber = hex.ReadWord(pkt, &amp;idx)
+        return nil</span>
+}
+
+func (m *Msg04) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        pkt = hex.WriteWord(pkt, m.SerialNumber)
+
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg04) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg04) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg04) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg04) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package models
+
+type Msg07 struct {
+        Header *MsgHeader `json:"header"`
+}
+
+func (m *Msg07) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        return nil
+}</span>
+
+func (m *Msg07) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg07) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg07) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg07) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+func GenerateMsh80Receive(vin string, timeNow time.Time, parameterID []byte) *Msg80Receive <span class="cov8" title="1">{
+        return &amp;Msg80Receive{
+                Header:       GenerateHeader(vin, 0x80, 0xFE),
+                Time:         timeNow,
+                ParameterIDs: parameterID,
+        }
+}</span>
+
+// Parameter Query
+type Msg80Receive struct {
+        Header       *MsgHeader `json:"header"`
+        Time         time.Time  `json:"time"`
+        ParameterIDs []byte     `json:"parameterIDs"`
+}
+
+func (m *Msg80Receive) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        idLen := hex.ReadByte(pkt, &amp;idx)
+        m.ParameterIDs = hex.ReadBytes(pkt, &amp;idx, int(idLen))
+        return nil</span>
+}
+
+func (m *Msg80Receive) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        pkt = hex.WriteByte(pkt, uint8(len(m.ParameterIDs)))
+        pkt = hex.WriteBytes(pkt, m.ParameterIDs)
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg80Receive) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg80Receive) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg80Receive) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package models
+
+import (
+        "maps"
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+// Parameter Reply
+type Msg80Reply struct {
+        Header     *MsgHeader `json:"header"`
+        Time       time.Time  `json:"time"`
+        Parameters Parameters `json:"parameters"`
+}
+
+func (m *Msg80Reply) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        _ = hex.ReadByte(pkt, &amp;idx)
+        return m.Parameters.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg80Reply) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        param, err := m.Parameters.Encode()
+        if err != nil </span><span class="cov8" title="1">{
+                pkt = hex.WriteByte(pkt, 0)
+                return pkt, err
+        }</span>
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, uint8(m.Parameters.length()))
+        pkt = hex.WriteBytes(pkt, param)
+        return WriteHeader(m, pkt)</span>
+}
+
+func (m *Msg80Reply) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg80Reply) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        cp.Parameters = maps.Clone(m.Parameters)
+        return &amp;cp
+}</span>
+func (m Msg80Reply) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg80Reply) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package models
+
+import (
+        "maps"
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+// Parameter Set
+type Msg81 struct {
+        Header     *MsgHeader `json:"header"`
+        Time       time.Time  `json:"time"`
+        Parameters Parameters `json:"parameters"`
+}
+
+func (m *Msg81) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        _ = hex.ReadByte(pkt, &amp;idx)
+        return m.Parameters.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg81) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        param, err := m.Parameters.Encode()
+        if err != nil </span><span class="cov8" title="1">{
+                pkt = hex.WriteByte(pkt, 0)
+                return pkt, err
+        }</span>
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, uint8(m.Parameters.length()))
+        pkt = hex.WriteBytes(pkt, param)
+        return WriteHeader(m, pkt)</span>
+}
+
+func (m *Msg81) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg81) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        cp.Parameters = maps.Clone(m.Parameters)
+        return &amp;cp
+}</span>
+func (m Msg81) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+
+func (m Msg81) GetTime() time.Time <span class="cov8" title="1">{
+        return m.Time
+}</span>
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+// Control
+type Msg82 struct {
+        Header  *MsgHeader `json:"header"`
+        Time    time.Time  `json:"time"`
+        Control Control    `json:"control"`
+}
+
+func (m *Msg82) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov8" title="1">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        return m.Control.Decode(pkt, &amp;idx)</span>
+}
+
+func (m *Msg82) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        control, _ := m.Control.Encode()
+        // no error return
+        // if err != nil {
+        //         return nil, errors.Wrapf(err, "encode control id 0x%02x", m.Control.GetID())
+        // }
+        pkt = hex.WriteBytes(pkt, control)
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msg82) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msg82) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m Msg82) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+type MsgReply struct {
+        Header *MsgHeader `json:"header"`
+        Time   time.Time  `json:"time"`
+}
+
+func (m *MsgReply) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        t, err := TimeDecode(pkt, &amp;idx)
+        if err != nil </span><span class="cov0" title="0">{
+                t = time.Time{}
+        }</span>
+        <span class="cov8" title="1">m.Time = t.UTC()
+        return nil</span>
+}
+
+func (m *MsgReply) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        t := TimeEncode(m.Time)
+        pkt = hex.WriteBytes(pkt, t)
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *MsgReply) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *MsgReply) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+func (m MsgReply) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package models
+
+import (
+        "github.com/k2biru/montor/codec/hex"
+)
+
+type Msgxx struct {
+        Header *MsgHeader `json:"header"`
+        Raw    []byte     `json:"raw"`
+}
+
+func (m *Msgxx) Decode(packet *PacketData) error <span class="cov8" title="1">{
+        m.Header = packet.Header
+        pkt, idx := packet.Body, 0
+        m.Raw = hex.ReadBytes(pkt, &amp;idx, int(m.Header.BodyLength))
+        return nil
+}</span>
+
+func (m *Msgxx) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteBytes(pkt, m.Raw)
+        return WriteHeader(m, pkt)
+}</span>
+
+func (m *Msgxx) GetHeader() *MsgHeader <span class="cov8" title="1">{
+        return m.Header
+}</span>
+
+func (m *Msgxx) Copy() GBT32960Msg <span class="cov8" title="1">{
+        header := *m.Header
+        cp := *m
+        cp.Header = &amp;header
+        return &amp;cp
+}</span>
+
+func (m Msgxx) GetMsgSN() string <span class="cov8" title="1">{
+        return ""
+}</span>
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package models
+
+import (
+        "maps"
+        "reflect"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+type Parameters map[uint8]any
+
+func (m *Parameters) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        //reset
+        *m = make(map[uint8]any)
+
+        for len(pkt[*idx:]) &gt; 1 </span><span class="cov8" title="1">{
+                // get type
+                id := hex.ReadByte(pkt, idx)
+
+                // match lookuptable
+                lt, ok := paramLookup[id]
+                if !ok </span><span class="cov8" title="1">{
+                        return errors.Wrapf(ErrDecodeMsg, "unknow report 0x%02x", id)
+                }</span>
+                // generate item
+                <span class="cov8" title="1">val := lt.GenerateValue()
+                // decode item
+                switch val.(type) </span>{
+                // case uint32: // no DWORD
+                //         val = hex.ReadDoubleWord(pkt, idx)
+                case uint16:<span class="cov8" title="1">
+                        val = hex.ReadWord(pkt, idx)</span>
+                case uint8:<span class="cov8" title="1">
+                        val = hex.ReadByte(pkt, idx)</span>
+                case []uint8:<span class="cov8" title="1">
+                        length, ok := (*m)[lt.LenID].(uint8)
+                        if !ok </span><span class="cov8" title="1">{
+                                return errors.Wrapf(ErrDecodeMsg, "invalid id 0x%02x ", lt.LenID)
+                        }</span>
+                        <span class="cov8" title="1">val = hex.ReadBytes(pkt, idx, int(length))</span>
+                case string:<span class="cov8" title="1">
+                        // read string using fixed length
+                        val = hex.ReadString(pkt, idx, int(lt.FixedLen))</span>
+                        // default:
+                        //         return errors.Wrapf(ErrDecodeMsg, " unknow type of 0x%02x", id)
+                }
+                <span class="cov8" title="1">(*m)[id] = val</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m *Parameters) encodeItem(id uint8, v any) (pkt []byte, err error) <span class="cov8" title="1">{
+        // match lookuptable
+        lt, ok := paramLookup[id]
+        if !ok </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrDecodeMsg, "unknow report 0x%02x", id)
+        }</span>
+        <span class="cov8" title="1">var pktVal []byte
+        switch vv := v.(type) </span>{
+        case uint16:<span class="cov8" title="1">
+                pktVal = hex.WriteWord(pktVal, vv)</span>
+        case uint8:<span class="cov8" title="1">
+                pktVal = hex.WriteByte(pktVal, vv)</span>
+        case []uint8:<span class="cov8" title="1">
+                length := uint8(len(vv))
+                pkt, _ = m.encodeItem(lt.LenID, length)
+
+                pktVal = hex.WriteBytes(pktVal, vv)</span>
+        case string:<span class="cov8" title="1">
+                // write string using fixed length
+                pktVal = hex.WriteString(pktVal, vv, int(lt.FixedLen))</span>
+
+        default:<span class="cov8" title="1">
+                return pkt, errors.Wrapf(ErrDecodeMsg, " unknow type of 0x%02x", id)</span>
+        }
+
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, id)
+        pkt = hex.WriteBytes(pkt, pktVal)
+        return pkt, nil</span>
+}
+func (m *Parameters) deleteUnused() <span class="cov8" title="1">{
+        // delete length key
+        for _, v := range paramLookup </span><span class="cov8" title="1">{
+                if v.LenID != 0 </span><span class="cov8" title="1">{
+                        delete(*m, v.LenID)
+                }</span>
+        }
+}
+
+func (m Parameters) length() int <span class="cov8" title="1">{
+        // delete length key
+        m.deleteUnused()
+
+        // length current
+        length := len(m)
+        for key := range m </span><span class="cov8" title="1">{
+                if x, ok := paramLookup[key]; ok &amp;&amp; x.LenID != 0x00 </span><span class="cov8" title="1">{
+                        length++
+                }</span>
+        }
+        <span class="cov8" title="1">return length</span>
+}
+
+func (m Parameters) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        // delete length key
+        m.deleteUnused()
+
+        // sorting as slice
+        kv := sortAscending(m)
+
+        // encode every slice
+        for _, v := range kv </span><span class="cov8" title="1">{
+                p, err := m.encodeItem(v.Key, v.Value)
+                if err != nil </span><span class="cov8" title="1">{
+                        return pkt, err
+                }</span>
+                <span class="cov8" title="1">pkt = hex.WriteBytes(pkt, p)</span>
+        }
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m Parameters) Add(id uint8, val any) error <span class="cov8" title="1">{
+        tb, ok := paramLookup[id]
+        if !ok </span><span class="cov8" title="1">{
+                return ErrInvalidID
+        }</span>
+        <span class="cov8" title="1">inputType := reflect.TypeOf(val)
+        generatedType := reflect.TypeOf(tb.GenerateValue())
+        if inputType != generatedType </span><span class="cov8" title="1">{
+                return errors.Wrapf(ErrMissmatch,
+                        "at id 0x%02x expect %s got %s", id, generatedType, inputType)
+        }</span>
+        <span class="cov8" title="1">m[id] = val
+        return nil</span>
+}
+
+func (m Parameters) Delete(id uint8) <span class="cov8" title="1">{
+        delete(m, id)
+}</span>
+func (m Parameters) IsEqual(other Parameters) error <span class="cov8" title="1">{
+        if m == nil &amp;&amp; other == nil </span><span class="cov8" title="1">{
+                return nil
+        }</span>
+        <span class="cov8" title="1">if m == nil || other == nil </span><span class="cov8" title="1">{
+                return errors.Wrap(ErrInvalidConvert, "one of the maps is nil")
+        }</span>
+        <span class="cov8" title="1">if len(m) != len(other) </span><span class="cov8" title="1">{
+                return errors.Wrapf(ErrInvalidLength, "self=%d, other=%d", len(m), len(other))
+        }</span>
+        <span class="cov8" title="1">for k, v1 := range m </span><span class="cov8" title="1">{
+                v2, ok := other[k]
+                if !ok </span><span class="cov8" title="1">{
+                        return errors.Wrapf(ErrInvalidID, "key %d is missing in the other map", k)
+                }</span>
+                <span class="cov8" title="1">if !reflect.DeepEqual(v1, v2) </span><span class="cov8" title="1">{
+                        return errors.Wrapf(ErrMissmatch, "values for key %d are not equal: %v != %v", k, v1, v2)
+                }</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+type GeneralParameter interface {
+        Decode(pkt []byte, idx *int) error
+        Encode() (pkt []byte, err error)
+        GetID() uint8
+}
+
+type ParamProperties struct {
+        GenerateValue func() any // value generator return []byte{}, string(""), uint8, or uint16
+        LenID         uint8      // length of value from another id for string / []byte value
+        FixedLen      uint8      // fixed length of value for string / []byte value
+}
+
+var paramLookup = map[uint8]ParamProperties{
+        0x01: { // waktu penyimpanan lokal
+                GenerateValue: func() any <span class="cov0" title="0">{ return uint16(0) }</span>,
+        },
+        0x02: { // waktu pelaporan default
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x03: { // waktu pelaporan saat alarm
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x04: { // panjang platform domain 0x05
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint8(0) }</span>,
+        },
+        0x05: { // domain  platform
+                GenerateValue: func() any <span class="cov8" title="1">{ return []byte{} }</span>,
+                LenID:         0x04,
+        },
+        0x06: { // port
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x07: { // versi hw
+                GenerateValue: func() any <span class="cov8" title="1">{ return string("") }</span>,
+                FixedLen:      5,
+        },
+        0x08: { // versi sw
+                GenerateValue: func() any <span class="cov8" title="1">{ return string("") }</span>,
+                FixedLen:      5,
+        },
+        0x09: { // waktu HB
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint8(0) }</span>,
+        },
+        0x0A: { // terminal respose timeout
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x0B: { // platform response timeout
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x0C: { // interval between login
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint8(0) }</span>,
+        },
+        0x0D: { // panjang public domain 0x0F
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint8(0) }</span>,
+        },
+        0x0E: { // domain public
+                GenerateValue: func() any <span class="cov8" title="1">{ return []byte{} }</span>,
+                LenID:         0x0D,
+        },
+        0x0F: { // port public
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint16(0) }</span>,
+        },
+        0x10: { // monitoring
+                GenerateValue: func() any <span class="cov8" title="1">{ return uint8(0) }</span>,
+        },
+}
+
+// set custom parameter lookup for param decoder
+func SetParameterPropertiesLookup(lookup map[uint8]ParamProperties) <span class="cov8" title="1">{
+        maps.Copy(paramLookup, lookup)
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const vehicleDataMin = 20
+
+type VehicleData struct {
+        Status       uint8  `json:"status"`
+        Charging     uint8  `json:"charging"`
+        OpMode       uint8  `json:"operatingMode"`
+        Speed        uint16 `json:"speed"`
+        Odometer     uint32 `json:"odometer"`
+        TotalVoltage uint16 `json:"totalVoltage"`
+        TotalCurrent uint16 `json:"totalCurrent"`
+        SoC          uint8  `json:"stateOfCharge"`
+        DCDCStatus   uint8  `json:"dcDcStatus"`
+        Gear         uint8  `json:"gear"`
+        Insulator    uint16 `json:"insulator"`
+        Throttle     uint8  `json:"trottle"`
+        Brake        uint8  `json:"brake"`
+}
+
+func (m *VehicleData) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; vehicleDataMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.Status = hex.ReadByte(pkt, idx)
+        m.Charging = hex.ReadByte(pkt, idx)
+        m.OpMode = hex.ReadByte(pkt, idx)
+        m.Speed = hex.ReadWord(pkt, idx)
+        m.Odometer = hex.ReadDoubleWord(pkt, idx)
+        m.TotalVoltage = hex.ReadWord(pkt, idx)
+        m.TotalCurrent = hex.ReadWord(pkt, idx)
+        m.SoC = hex.ReadByte(pkt, idx)
+        m.DCDCStatus = hex.ReadByte(pkt, idx)
+        m.Gear = hex.ReadByte(pkt, idx)
+        m.Insulator = hex.ReadWord(pkt, idx)
+        m.Throttle = hex.ReadByte(pkt, idx)
+        m.Brake = hex.ReadByte(pkt, idx)
+        return nil</span>
+}
+
+func (m *VehicleData) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.Status)
+        pkt = hex.WriteByte(pkt, m.Charging)
+        pkt = hex.WriteByte(pkt, m.OpMode)
+        pkt = hex.WriteWord(pkt, m.Speed)
+        pkt = hex.WriteDoubleWord(pkt, m.Odometer)
+        pkt = hex.WriteWord(pkt, m.TotalVoltage)
+        pkt = hex.WriteWord(pkt, m.TotalCurrent)
+        pkt = hex.WriteByte(pkt, m.SoC)
+        pkt = hex.WriteByte(pkt, m.DCDCStatus)
+        pkt = hex.WriteByte(pkt, m.Gear)
+        pkt = hex.WriteWord(pkt, m.Insulator)
+        pkt = hex.WriteByte(pkt, m.Throttle)
+        pkt = hex.WriteByte(pkt, m.Brake)
+        return pkt, err
+}</span>
+
+func (m VehicleData) GetID() uint8 <span class="cov8" title="1">{
+        return 0x01
+}</span>
+
+func (m *VehicleData) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias VehicleData
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+const driveMotorSize = 12
+const driveMotorsMinimum = driveMotorSize + 1
+
+type DriveMotor struct {
+        SerialNumber         uint8  `json:"serialNumber"`
+        Status               uint8  `json:"status"`
+        ControlerTemperature uint8  `json:"controlerTemperature"`
+        Speed                uint16 `json:"speed"`
+        Torque               uint16 `json:"torque"`
+        Temperature          uint8  `json:"temperature"`
+        InputVoltage         uint16 `json:"inputVoltage"`
+        InputCurrent         uint16 `json:"inputCurrent"`
+}
+
+func (m *DriveMotor) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; driveMotorSize </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.SerialNumber = hex.ReadByte(pkt, idx)
+        m.Status = hex.ReadByte(pkt, idx)
+        m.ControlerTemperature = hex.ReadByte(pkt, idx)
+        m.Speed = hex.ReadWord(pkt, idx)
+        m.Torque = hex.ReadWord(pkt, idx)
+        m.Temperature = hex.ReadByte(pkt, idx)
+        m.InputVoltage = hex.ReadWord(pkt, idx)
+        m.InputCurrent = hex.ReadWord(pkt, idx)
+        return nil</span>
+}
+
+func (m *DriveMotor) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.SerialNumber)
+        pkt = hex.WriteByte(pkt, m.Status)
+        pkt = hex.WriteByte(pkt, m.ControlerTemperature)
+        pkt = hex.WriteWord(pkt, m.Speed)
+        pkt = hex.WriteWord(pkt, m.Torque)
+        pkt = hex.WriteByte(pkt, m.Temperature)
+        pkt = hex.WriteWord(pkt, m.InputVoltage)
+        pkt = hex.WriteWord(pkt, m.InputCurrent)
+        return pkt, err
+}</span>
+
+type DriveMotors []*DriveMotor
+
+func (m DriveMotors) GetID() uint8 <span class="cov8" title="1">{
+        return 0x02
+}</span>
+
+func (m *DriveMotors) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; driveMotorsMinimum </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">total := hex.ReadByte(pkt, idx)
+        expextedLen := (int(total) * driveMotorSize)
+
+        if pLen := len(pkt[*idx:]); pLen &lt; expextedLen </span><span class="cov8" title="1">{
+                return errors.Wrapf(ErrDecodeMsg, "expected len %d got %d", expextedLen, pLen)
+        }</span>
+        // reset all
+        <span class="cov8" title="1">*m = make([]*DriveMotor, 0)
+
+        // decode
+        for i := 0; i &lt; int(total); i++ </span><span class="cov8" title="1">{
+                dm := DriveMotor{}
+                _ = dm.Decode(pkt, idx)
+                // DriveMotor.Decode never return error because expextedLen hadbeen check
+                // if  err != nil {
+                //         return err
+                // }
+                *m = append(*m, &amp;dm)
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m DriveMotors) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        total := len(m)
+        pkt = hex.WriteByte(pkt, uint8(total))
+        for _, v := range m </span><span class="cov8" title="1">{
+                vp, _ := v.Encode()
+                // DriveMotor.Encode never return error
+                // if err != nil {
+                //         return nil, err
+                // }
+                pkt = hex.WriteBytes(pkt, vp)
+
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m *DriveMotors) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias DriveMotors
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const fuelCellMin = 21
+
+type FuelCell struct {
+        BatVoltage                     uint16  `json:"batVoltage"`
+        BatCurrent                     uint16  `json:"batCurrent"`
+        FuelRate                       uint16  `json:"fuelRate"`
+        Temperatures                   []uint8 `json:"temperatures"`
+        HydrogenSysMaxTemp             uint16  `json:"hydrogenSysMaxTemp"`
+        HydrogenSysMaxTempNo           uint8   `json:"hydrogenSysMaxTempNo"`
+        HydrogenSysMaxConcentrations   uint16  `json:"hydrogenSysMaxConcentrations"`
+        HydrogenSysMaxConcentrationsNo uint8   `json:"hydrogenSysMaxConcentrationsNo"`
+        HydrogenSysMaxPressure         uint16  `json:"hydrogenSysMaxPressure"`
+        HydrogenSysMaxPressureNo       uint8   `json:"hydrogenSysMaxPressureNo"`
+        DCStatus                       uint8   `json:"dcStatus"`
+}
+
+func (m *FuelCell) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; fuelCellMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.BatVoltage = hex.ReadWord(pkt, idx)
+        m.BatCurrent = hex.ReadWord(pkt, idx)
+        m.FuelRate = hex.ReadWord(pkt, idx)
+        tempLen := hex.ReadByte(pkt, idx)
+        m.Temperatures = hex.ReadBytes(pkt, idx, int(tempLen))
+        m.HydrogenSysMaxTemp = hex.ReadWord(pkt, idx)
+        m.HydrogenSysMaxTempNo = hex.ReadByte(pkt, idx)
+        m.HydrogenSysMaxConcentrations = hex.ReadWord(pkt, idx)
+        m.HydrogenSysMaxConcentrationsNo = hex.ReadByte(pkt, idx)
+        m.HydrogenSysMaxPressure = hex.ReadWord(pkt, idx)
+        m.HydrogenSysMaxPressureNo = hex.ReadByte(pkt, idx)
+        m.DCStatus = hex.ReadByte(pkt, idx)
+        return nil</span>
+}
+
+func (m *FuelCell) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteWord(pkt, m.BatVoltage)
+        pkt = hex.WriteWord(pkt, m.BatCurrent)
+        pkt = hex.WriteWord(pkt, m.FuelRate)
+        pkt = hex.WriteByte(pkt, uint8(len(m.Temperatures)))
+        pkt = hex.WriteBytes(pkt, m.Temperatures)
+        pkt = hex.WriteWord(pkt, m.HydrogenSysMaxTemp)
+        pkt = hex.WriteByte(pkt, m.HydrogenSysMaxTempNo)
+        pkt = hex.WriteWord(pkt, m.HydrogenSysMaxConcentrations)
+        pkt = hex.WriteByte(pkt, m.HydrogenSysMaxConcentrationsNo)
+        pkt = hex.WriteWord(pkt, m.HydrogenSysMaxPressure)
+        pkt = hex.WriteByte(pkt, m.HydrogenSysMaxPressureNo)
+        pkt = hex.WriteByte(pkt, m.DCStatus)
+        return pkt, err
+}</span>
+
+func (m FuelCell) GetID() uint8 <span class="cov8" title="1">{
+        return 0x03
+}</span>
+
+func (m *FuelCell) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias FuelCell
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const engineMin = 5
+
+type Engine struct {
+        Status   uint8  `json:"status"`
+        Revs     uint16 `json:"revolution"`
+        FuelRate uint16 `json:"fuelRate"`
+}
+
+func (m *Engine) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; engineMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.Status = hex.ReadByte(pkt, idx)
+        m.Revs = hex.ReadWord(pkt, idx)
+        m.FuelRate = hex.ReadWord(pkt, idx)
+        return nil</span>
+}
+
+func (m *Engine) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.Status)
+        pkt = hex.WriteWord(pkt, m.Revs)
+        pkt = hex.WriteWord(pkt, m.FuelRate)
+        return pkt, err
+}</span>
+
+func (m Engine) GetID() uint8 <span class="cov8" title="1">{
+        return 0x04
+}</span>
+
+func (m *Engine) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias Engine
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const locationMin = 9
+
+// type LocationStatus struct {
+//         Valid bool `json:"valid"`
+//         South bool `json:"south"`
+//         West  bool `json:"west"`
+// }
+
+// func (m *LocationStatus) Decode(data uint8) {
+//         m.Valid = getBit(data, 0)
+//         m.South = getBit(data, 1)
+//         m.West = getBit(data, 2)
+
+// }
+// func (m *LocationStatus) Encode() (num uint8) {
+//         if m.Valid {
+//                 num = setBit(num, 0)
+//         }
+//         if m.South {
+//                 num = setBit(num, 1)
+//         }
+//         if m.West {
+//                 num = setBit(num, 2)
+//         }
+//         return num
+
+// }
+
+type Location struct {
+        Status    uint8  `json:"status"`
+        Longitude uint32 `json:"longitude"`
+        Latidude  uint32 `json:"latidude"`
+}
+
+func (m *Location) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; locationMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.Status = hex.ReadByte(pkt, idx)
+        m.Longitude = hex.ReadDoubleWord(pkt, idx)
+        m.Latidude = hex.ReadDoubleWord(pkt, idx)
+        return nil</span>
+}
+
+func (m Location) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.Status)
+        pkt = hex.WriteDoubleWord(pkt, m.Longitude)
+        pkt = hex.WriteDoubleWord(pkt, m.Latidude)
+        return pkt, err
+}</span>
+
+func (m Location) GetID() uint8 <span class="cov8" title="1">{
+        return 0x05
+}</span>
+
+// func setBit(value uint8, bitPos uint) uint8 {
+//         return value | (1 &lt;&lt; bitPos)
+// }
+
+// func getBit(value uint8, bitPos uint) bool {
+//         return (value &amp; (1 &lt;&lt; bitPos)) != 0
+// }
+
+func (m *Location) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias Location
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const extremeMin = 14
+
+type Extreme struct {
+        MaxVoltageBatAssyNo      uint8  `json:"maxVoltageBatAssyNo"`
+        MaxVoltageSingleBatNo    uint8  `json:"maxVoltageSingleBatNo"`
+        MaxVoltageSingleBatValue uint16 `json:"maxVoltageSingleBatValue"`
+        MinVoltageBatAssyNo      uint8  `json:"minVoltageBatAssyNo"`
+        MinVoltageSingleBatNo    uint8  `json:"minVoltageSingleBatNo"`
+        MinVoltageSingleBatValue uint16 `json:"minVoltageSingleBatValue"`
+        MaxTempBatProbeNo        uint8  `json:"maxTempBatProbeNo"`
+        MaxTempBatAssyNo         uint8  `json:"maxTempBatAssyNo"`
+        MaxTempBatProbeValue     uint8  `json:"maxTempBatProbeValue"`
+        MinTempBatAssyNo         uint8  `json:"minTempBatAssyNo"`
+        MinTempBatProbeNo        uint8  `json:"minTempBatProbeNo"`
+        MinTempBatProbeValue     uint8  `json:"minTempBatProbeValue"`
+}
+
+func (m *Extreme) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; extremeMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.MaxVoltageBatAssyNo = hex.ReadByte(pkt, idx)
+        m.MaxVoltageSingleBatNo = hex.ReadByte(pkt, idx)
+        m.MaxVoltageSingleBatValue = hex.ReadWord(pkt, idx)
+        m.MinVoltageBatAssyNo = hex.ReadByte(pkt, idx)
+        m.MinVoltageSingleBatNo = hex.ReadByte(pkt, idx)
+        m.MinVoltageSingleBatValue = hex.ReadWord(pkt, idx)
+        m.MaxTempBatProbeNo = hex.ReadByte(pkt, idx)
+        m.MaxTempBatAssyNo = hex.ReadByte(pkt, idx)
+        m.MaxTempBatProbeValue = hex.ReadByte(pkt, idx)
+        m.MinTempBatAssyNo = hex.ReadByte(pkt, idx)
+        m.MinTempBatProbeNo = hex.ReadByte(pkt, idx)
+        m.MinTempBatProbeValue = hex.ReadByte(pkt, idx)
+        return nil</span>
+}
+
+func (m Extreme) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.MaxVoltageBatAssyNo)
+        pkt = hex.WriteByte(pkt, m.MaxVoltageSingleBatNo)
+        pkt = hex.WriteWord(pkt, m.MaxVoltageSingleBatValue)
+        pkt = hex.WriteByte(pkt, m.MinVoltageBatAssyNo)
+        pkt = hex.WriteByte(pkt, m.MinVoltageSingleBatNo)
+        pkt = hex.WriteWord(pkt, m.MinVoltageSingleBatValue)
+        pkt = hex.WriteByte(pkt, m.MaxTempBatProbeNo)
+        pkt = hex.WriteByte(pkt, m.MaxTempBatAssyNo)
+        pkt = hex.WriteByte(pkt, m.MaxTempBatProbeValue)
+        pkt = hex.WriteByte(pkt, m.MinTempBatAssyNo)
+        pkt = hex.WriteByte(pkt, m.MinTempBatProbeNo)
+        pkt = hex.WriteByte(pkt, m.MinTempBatProbeValue)
+        return pkt, err
+}</span>
+
+func (m Extreme) GetID() uint8 <span class="cov8" title="1">{
+        return 0x06
+}</span>
+
+func (m *Extreme) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias Extreme
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+)
+
+const alarmMin = 14
+
+type Alarm struct {
+        AlarmLevel         uint8    `json:"alarmLevel"`
+        AlarmBatteryFlag   uint32   `json:"alarmBatteryFlag"`
+        AlarmBatteryOthers []uint32 `json:"alarmBatteryOthers"`
+        AlarmDriveMotor    []uint32 `json:"alarmDriveMotor"`
+        AlarmEngines       []uint32 `json:"alarmEngines"`
+        AlarmOthers        []uint32 `json:"alarmOthers"`
+}
+
+func (m *Alarm) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; alarmMin </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.AlarmLevel = hex.ReadByte(pkt, idx)
+        m.AlarmBatteryFlag = hex.ReadDoubleWord(pkt, idx)
+        aLen := hex.ReadByte(pkt, idx)
+        if len(pkt[*idx:]) &lt; (int(aLen)*4 + 1) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">for i := 0; i &lt; int(aLen); i++ </span><span class="cov8" title="1">{
+                m.AlarmBatteryOthers = append(m.AlarmBatteryOthers, hex.ReadDoubleWord(pkt, idx))
+        }</span>
+        <span class="cov8" title="1">aLen = hex.ReadByte(pkt, idx)
+        if len(pkt[*idx:]) &lt; (int(aLen)*4 + 1) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">for i := 0; i &lt; int(aLen); i++ </span><span class="cov8" title="1">{
+                m.AlarmDriveMotor = append(m.AlarmDriveMotor, hex.ReadDoubleWord(pkt, idx))
+        }</span>
+        <span class="cov8" title="1">aLen = hex.ReadByte(pkt, idx)
+        if len(pkt[*idx:]) &lt; (int(aLen)*4 + 1) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">for i := 0; i &lt; int(aLen); i++ </span><span class="cov8" title="1">{
+                m.AlarmEngines = append(m.AlarmEngines, hex.ReadDoubleWord(pkt, idx))
+        }</span>
+        <span class="cov8" title="1">aLen = hex.ReadByte(pkt, idx)
+        if len(pkt[*idx:]) &lt; (int(aLen) * 4) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">for i := 0; i &lt; int(aLen); i++ </span><span class="cov8" title="1">{
+                m.AlarmOthers = append(m.AlarmOthers, hex.ReadDoubleWord(pkt, idx))
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m Alarm) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.AlarmLevel)
+        pkt = hex.WriteDoubleWord(pkt, m.AlarmBatteryFlag)
+        pkt = hex.WriteByte(pkt, uint8(len(m.AlarmBatteryOthers)))
+        for _, v := range m.AlarmBatteryOthers </span><span class="cov8" title="1">{
+                pkt = hex.WriteDoubleWord(pkt, v)
+        }</span>
+
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, uint8(len(m.AlarmDriveMotor)))
+        for _, v := range m.AlarmDriveMotor </span><span class="cov8" title="1">{
+                pkt = hex.WriteDoubleWord(pkt, v)
+        }</span>
+
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, uint8(len(m.AlarmEngines)))
+        for _, v := range m.AlarmEngines </span><span class="cov8" title="1">{
+                pkt = hex.WriteDoubleWord(pkt, v)
+        }</span>
+
+        <span class="cov8" title="1">pkt = hex.WriteByte(pkt, uint8(len(m.AlarmOthers)))
+        for _, v := range m.AlarmOthers </span><span class="cov8" title="1">{
+                pkt = hex.WriteDoubleWord(pkt, v)
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m Alarm) GetID() uint8 <span class="cov8" title="1">{
+        return 0x07
+}</span>
+
+func (m *Alarm) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias Alarm
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+const batteryFrameMinimumSize = 10
+const batteriesFrameMinimumSize = batteryFrameMinimumSize + 1
+
+type BatteryVoltages struct {
+        AssyNo                      uint8    `json:"assamblyNo"`
+        Voltage                     uint16   `json:"voltage"`
+        Current                     uint16   `json:"current"`
+        BatteriesTotalNumber        uint16   `json:"batteriesTotalNumber"`
+        BatteryStartNumberFrame     uint16   `json:"batteryStartNumberFrame"`
+        SingleBatteryVoltageOnFrame []uint16 `json:"singleBatteryVoltageOnFrame"`
+}
+
+func (m *BatteryVoltages) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if ll := len(pkt[*idx:]); ll &lt; batteryFrameMinimumSize </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.AssyNo = hex.ReadByte(pkt, idx)
+        m.Voltage = hex.ReadWord(pkt, idx)
+        m.Current = hex.ReadWord(pkt, idx)
+        m.BatteriesTotalNumber = hex.ReadWord(pkt, idx)
+        m.BatteryStartNumberFrame = hex.ReadWord(pkt, idx)
+        bSize := hex.ReadByte(pkt, idx)
+        if ll := len(pkt[*idx:]); ll &lt; 2*int(bSize) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.SingleBatteryVoltageOnFrame = make([]uint16, 0, bSize)
+        for i := 0; i &lt; int(bSize); i++ </span><span class="cov8" title="1">{
+                batV := hex.ReadWord(pkt, idx)
+                m.SingleBatteryVoltageOnFrame = append(m.SingleBatteryVoltageOnFrame, batV)
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m *BatteryVoltages) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.AssyNo)
+        pkt = hex.WriteWord(pkt, m.Voltage)
+        pkt = hex.WriteWord(pkt, m.Current)
+        pkt = hex.WriteWord(pkt, m.BatteriesTotalNumber)
+        pkt = hex.WriteWord(pkt, m.BatteryStartNumberFrame)
+        bSize := uint8(len(m.SingleBatteryVoltageOnFrame))
+        pkt = hex.WriteByte(pkt, bSize)
+        for _, v := range m.SingleBatteryVoltageOnFrame </span><span class="cov8" title="1">{
+                pkt = hex.WriteWord(pkt, v)
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+type BatteriesVoltages []*BatteryVoltages
+
+func (m BatteriesVoltages) GetID() uint8 <span class="cov8" title="1">{
+        return 0x08
+}</span>
+
+func (m *BatteriesVoltages) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; batteriesFrameMinimumSize </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">total := hex.ReadByte(pkt, idx)
+        expextedLen := (int(total) * batteryFrameMinimumSize)
+
+        if pLen := len(pkt[*idx:]); pLen &lt; expextedLen </span><span class="cov0" title="0">{
+                return errors.Wrapf(ErrDecodeMsg, "expected len %d got %d", expextedLen, pLen)
+        }</span>
+        // reset all
+        <span class="cov8" title="1">*m = make([]*BatteryVoltages, 0)
+
+        // decode
+        for i := 0; i &lt; int(total); i++ </span><span class="cov8" title="1">{
+                dm := BatteryVoltages{}
+                err := dm.Decode(pkt, idx)
+                if err != nil </span><span class="cov8" title="1">{
+                        return err
+                }</span>
+                <span class="cov8" title="1">*m = append(*m, &amp;dm)</span>
+        }
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m BatteriesVoltages) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        total := len(m)
+        pkt = hex.WriteByte(pkt, uint8(total))
+        for _, v := range m </span><span class="cov8" title="1">{
+                vp, _ := v.Encode()
+                // DriveMotor.Encode never return error
+                pkt = hex.WriteBytes(pkt, vp)
+
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m *BatteriesVoltages) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias BatteriesVoltages
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">package models
+
+import (
+        "encoding/json"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+const batteryTemperatureMinimumSize = 2
+const batteryTemperaturesMinimumSize = batteryTemperatureMinimumSize + 1
+
+type BatteryTemperature struct {
+        AssyNo      uint8   `json:"assamblyNo                  "`
+        Temperature []uint8 `json:"temperature                 "`
+}
+
+func (m *BatteryTemperature) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if ll := len(pkt[*idx:]); ll &lt; batteryTemperatureMinimumSize </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.AssyNo = hex.ReadByte(pkt, idx)
+        tSize := hex.ReadWord(pkt, idx)
+        if ll := len(pkt[*idx:]); ll &lt; 1*int(tSize) </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">m.Temperature = make([]uint8, 0, tSize)
+        for i := 0; i &lt; int(tSize); i++ </span><span class="cov8" title="1">{
+                temp := hex.ReadByte(pkt, idx)
+                m.Temperature = append(m.Temperature, temp)
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m *BatteryTemperature) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        pkt = hex.WriteByte(pkt, m.AssyNo)
+        tSize := uint16(len(m.Temperature))
+        pkt = hex.WriteWord(pkt, tSize)
+        for _, v := range m.Temperature </span><span class="cov8" title="1">{
+                pkt = hex.WriteByte(pkt, v)
+
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+type BatteriesTemperatures []*BatteryTemperature
+
+func (m BatteriesTemperatures) GetID() uint8 <span class="cov8" title="1">{
+        return 0x09
+}</span>
+
+func (m *BatteriesTemperatures) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        if len(pkt[*idx:]) &lt; batteryTemperaturesMinimumSize </span><span class="cov8" title="1">{
+                return ErrDecodeMsg
+        }</span>
+        <span class="cov8" title="1">total := hex.ReadByte(pkt, idx)
+        expextedLen := (int(total) * batteryTemperatureMinimumSize)
+
+        if pLen := len(pkt[*idx:]); pLen &lt; expextedLen </span><span class="cov0" title="0">{
+                return errors.Wrapf(ErrDecodeMsg, "expected len %d got %d", expextedLen, pLen)
+        }</span>
+        // reset all
+        <span class="cov8" title="1">*m = make([]*BatteryTemperature, 0)
+
+        // decode
+        for i := 0; i &lt; int(total); i++ </span><span class="cov8" title="1">{
+                dm := BatteryTemperature{}
+                err := dm.Decode(pkt, idx)
+                if err != nil </span><span class="cov8" title="1">{
+                        return err
+                }</span>
+                <span class="cov8" title="1">*m = append(*m, &amp;dm)</span>
+        }
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m BatteriesTemperatures) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        total := len(m)
+        pkt = hex.WriteByte(pkt, uint8(total))
+        for _, v := range m </span><span class="cov8" title="1">{
+                vp, _ := v.Encode()
+                // DriveMotor.Encode never return error
+                pkt = hex.WriteBytes(pkt, vp)
+
+        }</span>
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m *BatteriesTemperatures) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        type Alias BatteriesTemperatures
+        return json.Marshal(&amp;struct {
+                *Alias
+        }{
+                Alias: (*Alias)(m),
+        })
+}</span>
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">package models
+
+import (
+        "encoding/json"
+        "strconv"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+type GeneralReport interface {
+        Decode(pkt []byte, idx *int) error
+        Encode() (pkt []byte, err error)
+        GetID() uint8
+        MarshalJSON() ([]byte, error)
+}
+type reportProperties struct {
+        generateValue func() GeneralReport
+        name          string
+}
+
+var reportTable = map[uint8]reportProperties{
+        0x01: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;VehicleData{} }</span>,
+                name:          "vehicleData",
+        },
+        0x02: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;DriveMotors{} }</span>,
+                name:          "DriveMotor",
+        },
+        0x03: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;FuelCell{} }</span>,
+                name:          "fuelCell",
+        },
+        0x04: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;Engine{} }</span>,
+                name:          "engine",
+        },
+        0x05: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;Location{} }</span>,
+                name:          "location",
+        },
+        0x06: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;Extreme{} }</span>,
+                name:          "extreme",
+        },
+        0x07: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;Alarm{} }</span>,
+                name:          "alarm",
+        },
+        0x08: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;BatteriesVoltages{} }</span>,
+                name:          "batteriesVoltages",
+        },
+        0x09: {
+                generateValue: func() GeneralReport <span class="cov8" title="1">{ return &amp;BatteriesTemperatures{} }</span>,
+                name:          "batteriesTemperatures",
+        },
+}
+
+type Reports map[uint8]GeneralReport
+
+func (m *Reports) reset() <span class="cov8" title="1">{
+        *m = make(map[uint8]GeneralReport)
+}</span>
+func getAs[T GeneralReport](r Reports, id uint8) (T, error) <span class="cov8" title="1">{
+        v, ok := r[id]
+        var zero T
+        if !ok </span><span class="cov8" title="1">{
+                return zero, ErrNotAvailable
+        }</span>
+        <span class="cov8" title="1">vv, ok := v.(T)
+        if !ok </span><span class="cov8" title="1">{
+                return zero, ErrMissmatch
+        }</span>
+        <span class="cov8" title="1">return vv, nil</span>
+
+}
+
+func (m Reports) As01() (*VehicleData, error) <span class="cov8" title="1">{
+        return getAs[*VehicleData](m, 0x01)
+}</span>
+
+func (m Reports) As02() (*DriveMotors, error) <span class="cov8" title="1">{
+        return getAs[*DriveMotors](m, 0x02)
+}</span>
+
+func (m Reports) As03() (*FuelCell, error) <span class="cov8" title="1">{
+        return getAs[*FuelCell](m, 0x03)
+}</span>
+
+func (m Reports) As04() (*Engine, error) <span class="cov8" title="1">{
+        return getAs[*Engine](m, 0x04)
+}</span>
+
+func (m Reports) As05() (*Location, error) <span class="cov8" title="1">{
+        return getAs[*Location](m, 0x05)
+}</span>
+func (m Reports) As06() (*Extreme, error) <span class="cov8" title="1">{
+        return getAs[*Extreme](m, 0x06)
+}</span>
+func (m Reports) As07() (*Alarm, error) <span class="cov8" title="1">{
+        return getAs[*Alarm](m, 0x07)
+}</span>
+func (m Reports) As08() (*BatteriesVoltages, error) <span class="cov8" title="1">{
+        return getAs[*BatteriesVoltages](m, 0x08)
+}</span>
+func (m Reports) As09() (*BatteriesTemperatures, error) <span class="cov8" title="1">{
+        return getAs[*BatteriesTemperatures](m, 0x09)
+}</span>
+
+func (m *Reports) Decode(pkt []byte, idx *int) error <span class="cov8" title="1">{
+        //reset
+        m.reset()
+
+        for len(pkt[*idx:]) &gt; 1 </span><span class="cov8" title="1">{
+                // get type
+                vType := hex.ReadByte(pkt, idx)
+
+                // match lookuptable
+                lt, ok := reportTable[vType]
+                if !ok </span><span class="cov8" title="1">{
+                        return errors.Wrapf(ErrDecodeMsg, "unknow report 0x%02x", vType)
+                }</span>
+                // generate item
+                <span class="cov8" title="1">val := lt.generateValue()
+                // decode item
+                err := val.Decode(pkt, idx)
+                if err != nil </span><span class="cov8" title="1">{
+                        return err
+                }</span>
+                <span class="cov8" title="1">(*m)[vType] = val</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m Reports) Encode() (pkt []byte, err error) <span class="cov8" title="1">{
+        // sorting as slice
+        kv := sortAscending(m)
+
+        // encode every slice
+        for _, v := range kv </span><span class="cov8" title="1">{
+                p, err := v.Value.Encode()
+                if err != nil </span><span class="cov8" title="1">{
+                        return pkt, err
+                }</span>
+                <span class="cov8" title="1">if v.Key != v.Value.GetID() </span><span class="cov8" title="1">{
+                        return pkt, errors.Wrapf(ErrEncodeMsg, "expected id 0x%02x got 0x%02x", v.Key, v.Value.GetID())
+                }</span>
+                <span class="cov8" title="1">pkt = hex.WriteByte(pkt, v.Key)
+                pkt = hex.WriteBytes(pkt, p)</span>
+        }
+        <span class="cov8" title="1">return pkt, err</span>
+}
+
+func (m Reports) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        // Initialize a map to hold the JSON structure.
+        jsonMap := make(map[string]interface{})
+
+        // Iterate through the map and marshal each report.
+        for id, report := range m </span><span class="cov8" title="1">{
+
+                // Determine the JSON key based on the ID.
+                name := strconv.Itoa(int(id))
+                if prop, ok := reportTable[id]; ok </span><span class="cov8" title="1">{
+                        name = prop.name
+                }</span>
+
+                // Marshal the report into JSON.
+                <span class="cov8" title="1">data, err := report.MarshalJSON()
+                if err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+
+                // Unmarshal the data into a generic interface to populate the map.
+                <span class="cov8" title="1">var jsonObj interface{}
+                if err := json.Unmarshal(data, &amp;jsonObj); err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+
+                <span class="cov8" title="1">jsonMap[name] = jsonObj</span>
+        }
+
+        // Marshal the entire map into JSON.
+        <span class="cov8" title="1">return json.Marshal(jsonMap)</span>
+}
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package models
+
+import (
+        "sort"
+)
+
+// create slice for sorting
+type keyValue[T any] struct {
+        Key   uint8
+        Value T
+}
+
+func sortAscending[T any](list map[uint8]T) []keyValue[T] <span class="cov8" title="1">{
+        // copy map to slice
+        s := make([]keyValue[T], 0, len(list))
+        for k, v := range list </span><span class="cov8" title="1">{
+                s = append(s, keyValue[T]{k, v})
+        }</span>
+        // sorting ascending
+        <span class="cov8" title="1">sort.SliceStable(s, func(i, j int) bool </span><span class="cov8" title="1">{
+                return s[i].Key &lt; s[j].Key
+        }</span>)
+        <span class="cov8" title="1">return s</span>
+}
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package models
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/codec/hex"
+
+        "github.com/pkg/errors"
+)
+
+const (
+        GBT32960TimeLayout = "060102150405" //"YYMMDDhhmmss"
+        timeMinLen         = 6
+)
+
+func GBT32960Timezone() *time.Location <span class="cov8" title="1">{
+        return time.FixedZone("UTC+8", 8*60*60)
+}</span>
+
+func TimeDecode(pkt []byte, idx *int) (time.Time, error) <span class="cov8" title="1">{
+        t := time.Time{}
+        if l := len(pkt[*idx:]); l &lt; timeMinLen </span><span class="cov0" title="0">{
+                return t, errors.Wrapf(ErrDecodeMsg, "to short, expect %d got %d", timeMinLen, l)
+        }</span>
+        <span class="cov8" title="1">year := int(hex.ReadByte(pkt, idx))
+        month := int(hex.ReadByte(pkt, idx))
+        date := int(hex.ReadByte(pkt, idx))
+        hour := int(hex.ReadByte(pkt, idx))
+        minute := int(hex.ReadByte(pkt, idx))
+        second := int(hex.ReadByte(pkt, idx))
+        if year &lt; 0 || year &gt; 99 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong year %d", year)
+        }</span>
+        <span class="cov8" title="1">year += 2000
+
+        if month &lt; 1 || month &gt; 12 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong month %d", month)
+                //err
+        }</span>
+        <span class="cov8" title="1">if date &lt; 1 || date &gt; 31 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong date %d", date)
+                //err
+        }</span>
+        <span class="cov8" title="1">if hour &lt; 0 || hour &gt; 23 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong hour %d", hour)
+        }</span>
+        <span class="cov8" title="1">if minute &lt; 0 || minute &gt; 59 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong minute %d", minute)
+        }</span>
+
+        <span class="cov8" title="1">if second &lt; 0 || second &gt; 59 </span><span class="cov8" title="1">{
+                return t, errors.Wrapf(ErrDecodeMsg, "wrong second %d", second)
+        }</span>
+        <span class="cov8" title="1">return time.Date(year, time.Month(month),
+                date, hour, minute, second, 0, GBT32960Timezone()).UTC(), nil</span>
+}
+
+func TimeEncode(t time.Time) (pkt []byte) <span class="cov8" title="1">{
+        t = t.In(GBT32960Timezone())
+        year := uint8(t.Year() - 2000)
+        month := uint8(t.Month())
+        date := uint8(t.Day())
+        hour := uint8(t.Hour())
+        minute := uint8(t.Minute())
+        second := uint8(t.Second())
+        pkt = hex.WriteByte(pkt, year)
+        pkt = hex.WriteByte(pkt, month)
+        pkt = hex.WriteByte(pkt, date)
+        pkt = hex.WriteByte(pkt, hour)
+        pkt = hex.WriteByte(pkt, minute)
+        pkt = hex.WriteByte(pkt, second)
+        return pkt
+}</span>
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package montor
+
+import (
+        "time"
+
+        "github.com/k2biru/montor/models"
+
+        "github.com/pkg/errors"
+)
+
+var (
+        ErrEmptyPacket  = errors.New("Empty packet")
+        ErrVerifyFailed = errors.New("Verify failed")
+        ErrEncodeType   = errors.New("Error data type")
+        ErrActiveClose  = errors.New("Active close")
+)
+
+type PacketCodecHooks interface {
+        Decrypt(encType uint8, vin string, pkt []byte) ([]byte, error)
+}
+
+type PacketCodec interface {
+        Decode([]byte) (*models.PacketData, error)
+        Encode(models.GBT32960Msg) ([]byte, error)
+}
+
+func NewPacketCodec(hooks PacketCodecHooks) PacketCodec <span class="cov8" title="1">{
+        return &amp;packetCodec{
+                timeNow: time.Now,
+                hooks:   hooks,
+        }
+}</span>
+
+type packetCodec struct {
+        timeNow func() time.Time
+        hooks   PacketCodecHooks
+}
+
+func (m packetCodec) genVerifier(pkt []byte) []byte <span class="cov8" title="1">{
+        var code byte
+        for _, v := range pkt </span><span class="cov8" title="1">{
+                code ^= v
+        }</span>
+        <span class="cov8" title="1">pkt = append(pkt, code)
+        return pkt</span>
+}
+
+func (m packetCodec) verify(pkt []byte) ([]byte, error) <span class="cov8" title="1">{
+        n := len(pkt)
+        if n == 0 </span><span class="cov8" title="1">{
+                return nil, ErrEmptyPacket
+        }</span>
+
+        <span class="cov8" title="1">expected := pkt[n-1]
+        // verify using BCC algoritm
+        var actual byte = 0
+        for _, b := range pkt[:n-1] </span><span class="cov8" title="1">{
+                actual ^= b
+        }</span>
+        <span class="cov8" title="1">if expected != actual </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrVerifyFailed, "verify expect=%v, but actual=%v", expected, actual)
+        }</span>
+
+        <span class="cov8" title="1">return pkt[:n-1], nil</span>
+}
+
+func (m *packetCodec) Decode(payload []byte) (*models.PacketData, error) <span class="cov8" title="1">{
+        // verify
+        pkt, err := m.verify(payload)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">verifyCode := payload[len(payload)-1]
+
+        // decode
+        pd := &amp;models.PacketData{
+                Header:     &amp;models.MsgHeader{},
+                VerifyCode: verifyCode,
+        }
+
+        err = pd.Header.Decode(pkt)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrap(err, "Fail to decode packet")
+        }</span>
+
+        <span class="cov8" title="1">pd.Header.TimeCreated = m.timeNow()
+        pd.Body = pkt[pd.Header.Idx:]
+
+        // post processor for decrypt
+        if pd.Header.Encription != models.EncryptNone </span><span class="cov8" title="1">{
+                if m.hooks == nil </span><span class="cov0" title="0">{
+                        return nil, errors.Wrap(models.ErrUnset, "Decrypt not set")
+                }</span>
+                <span class="cov8" title="1">pd.Body, err = m.hooks.Decrypt(pd.Header.Encription, pd.Header.VIN, pkt[pd.Header.Idx:])
+                if err != nil </span><span class="cov8" title="1">{
+                        return nil, errors.Wrap(err, "Fail to decrypt packet")
+                }</span>
+        } else<span class="cov8" title="1"> {
+                pd.Body = pkt[pd.Header.Idx:]
+        }</span>
+
+        <span class="cov8" title="1">pd.Header.Idx = 0 // reset idx
+        return pd, nil</span>
+
+}
+func (m *packetCodec) Encode(data models.GBT32960Msg) ([]byte, error) <span class="cov8" title="1">{
+        pkt, err := data.Encode()
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrap(err, "Fail to encode msg")
+        }</span>
+        <span class="cov8" title="1">pkt = m.genVerifier(pkt)
+        return pkt, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package parser
+
+func BatteriesTemperaturesTemp() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "batteriesTemperaturesTemp",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   210,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">package parser
+
+func BatteriesVoltagesMilli() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "batteriesVoltagesMilli",
+                v:     value,
+                unit:  1, // 1 /mV
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func BatteriesVoltagesVolt() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "batteriesVoltagesVolt",
+                v:     value,
+                unit:  0.1, // 1 /0.01V
+                min:   0,
+                max:   1000,
+                round: true,
+        }
+}</span>
+
+func BatteriesVoltagesCurrent() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "batteriesVoltagesCurrent",
+                v:     value,
+                unit:  0.1, // 1 /0.01A
+                min:   -1000,
+                max:   1000,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package parser
+
+func DriveMotorStatus() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "driveMotorStatus",
+                lookup: map[uint8]string{
+                        0x01: "consumePower",
+                        0x02: "generatePower",
+                        0x03: "off",
+                        0x04: "ready",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func DriveMotorControlerTemperature() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "driveMotorControlerTemperature",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   210,
+                round: true,
+        }
+}</span>
+
+func DriveMotorSpeed() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "driveMotorControlerTemperature",
+                v:     value,
+                unit:  1, // 1 /rpm/min
+                min:   -20000,
+                max:   45531,
+                round: true,
+        }
+}</span>
+
+func DriveMotorTorque() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "driveMotorTorque",
+                v:     value,
+                unit:  0.1, // 0.1 /Nm
+                min:   -2000,
+                max:   4553,
+                round: true,
+        }
+}</span>
+
+func DriveMotorTemperature() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "driveMotorTemperature",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   210,
+                round: true,
+        }
+}</span>
+func DriveMotorInputVoltage() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "driveMotorInputVoltage",
+                v:     value,
+                unit:  0.1, // 0.1 /V
+                min:   0,
+                max:   30000,
+                round: true,
+        }
+}</span>
+
+func DriveMotorInputCurrent() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "driveMotorInputCurrent",
+                v:     value,
+                unit:  0.1, // 0.1 /A
+                min:   -1000,
+                max:   1000,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">package parser
+
+func EngineStatus() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "engineStatus",
+                lookup: map[uint8]string{
+                        0x01: "startup",
+                        0x02: "shutdown",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func EngineCrankshaffSpeed() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "engineCrankshaffSpeed",
+                v:     value,
+                unit:  1, // 1 /r/min
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func EngineFuelRate() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fngineFuelRate",
+                v:     value,
+                unit:  0.01, // 0.01 /L/100km
+                min:   0,
+                max:   600,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">package parser
+
+func ExtremeMaxVoltageSingleBatterymV() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "extremeMaxVoltageSingleBattery",
+                v:     value,
+                unit:  1, // 0.001 /v -&gt; 1 /mV
+                min:   0,
+                max:   15000,
+                round: true,
+        }
+}</span>
+
+func ExtremeMinVoltageSingleBatterymV() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "extremeMinVoltageSingleBatterymV",
+                v:     value,
+                unit:  1, // 0.001 /v -&gt; 1 /mV
+                min:   0,
+                max:   15000,
+                round: true,
+        }
+}</span>
+
+// unit in C
+func ExtremeMaxTempProbe() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "extremeMaxTempProbe",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   210,
+                round: true,
+        }
+}</span>
+
+// unit in C
+func ExtremeMinTempProbe() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "extremeMinTempProbe",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   210,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package parser
+
+func FuelCellVoltage() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellVoltage",
+                v:     value,
+                unit:  0.1, // 0.1 /V
+                min:   0,
+                max:   2000,
+                round: true,
+        }
+}</span>
+
+func FuelCellCurrent() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellCurrent",
+                v:     value,
+                unit:  0.1, // 0.1 /A
+                min:   0,
+                max:   2000,
+                round: true,
+        }
+}</span>
+
+func FuelCellRate() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellRate",
+                v:     value,
+                unit:  0.01, // 0.01 /kg/100km
+                min:   0,
+                max:   600,
+                round: true,
+        }
+}</span>
+func FuelCellTemperature() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "fuelCellTemperature",
+                v:     value,
+                unit:  1, // 1 /C
+                min:   -40,
+                max:   200,
+                round: true,
+        }
+}</span>
+
+func FuelCellHydrogenSysTemp() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellHydrogenSysTemp",
+                v:     value,
+                unit:  0.1, // 0.1 /C
+                min:   -40,
+                max:   200,
+                round: true,
+        }
+}</span>
+
+func FuelCellHydrogenSysConct() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellHydrogenSysConct",
+                v:     value,
+                unit:  1, // 1 /mg/kg
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func FuelCellHydrogenSysPress() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "fuelCellHydrogenSysPress",
+                v:     value,
+                unit:  0.1, // 0.1 /MPa
+                min:   0,
+                max:   100,
+                round: true,
+        }
+}</span>
+
+func FuelCellDCDCStatus() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "fuelCellDCDCStatus",
+                lookup: map[uint8]string{
+                        0x01: "working",
+                        0x02: "disconnect",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">package parser
+
+func LocationLatidude() *coordinate <span class="cov8" title="1">{
+        return &amp;coordinate{
+                v:      0,
+                bitLoc: 1,
+        }
+}</span>
+func LocationLongitude() *coordinate <span class="cov8" title="1">{
+        return &amp;coordinate{
+                v:      0,
+                bitLoc: 2,
+        }
+}</span>
+
+func LocationValid() *locValid <span class="cov8" title="1">{
+        var v locValid
+        return &amp;v
+}</span>
+
+type locValid bool
+
+func (m *locValid) SetValue(val uint8) *locValid <span class="cov8" title="1">{
+        *m = locValid(getBit(val, 0))
+        return m
+}</span>
+func (m locValid) GetValue() uint8 <span class="cov8" title="1">{
+        if m </span><span class="cov8" title="1">{
+                return setBit(0, 0)
+        }</span>
+        <span class="cov8" title="1">return 0</span>
+}
+func (m locValid) Valid() bool <span class="cov8" title="1">{
+        return !bool(m)
+}</span>
+
+func (m *locValid) Convert(val bool) *locValid <span class="cov8" title="1">{
+        *m = !locValid(val)
+        return m
+}</span>
+func Azimuth() *Convert[uint32] <span class="cov8" title="1">{
+        value := uint32(0)
+        value -= 1
+        return &amp;Convert[uint32]{
+                name:  "azimuth",
+                v:     value,
+                unit:  0.1, // 0,1°
+                min:   0,
+                max:   3600,
+                round: false,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">package parser
+
+func ParamLocalStorageDurrationMs() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "localStorageDurrationMs",
+                v:     value,
+                unit:  1, // 1/ms
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func ParamReportDurrationDefaultMs() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "reportDurrationDefaultMs",
+                v:     value,
+                unit:  1, // 1/ms
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func ParamReportDurrationAlarmMs() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "reportDurrationAlarmMs",
+                v:     value,
+                unit:  1, // 1/ms
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+
+func ParamHeartBeatSec() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "HeartBeatSec",
+                v:     value,
+                unit:  1, // 1/sec
+                min:   0,
+                max:   240,
+                round: true,
+        }
+}</span>
+
+func ParamTeminalResponseTimeup() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "terminalResponseTimeup",
+                v:     value,
+                unit:  1, // 1/sec
+                min:   0,
+                max:   600,
+                round: true,
+        }
+}</span>
+
+func ParamPlatformResponseTimeup() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "platformResponseTimeup",
+                v:     value,
+                unit:  1, // 1/sec
+                min:   0,
+                max:   600,
+                round: true,
+        }
+}</span>
+
+func ParamLoginIntervalMin() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "loginIntervalMin",
+                v:     value,
+                unit:  1, // 1/minute
+                min:   0,
+                max:   240,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">package parser
+
+import (
+        "errors"
+        "math"
+)
+
+var (
+        ErrException   = errors.New("excaption")
+        ErrInvalid     = errors.New("invalid")
+        ErrOverMaxSize = errors.New("data is bigger than max allowed")
+)
+
+type ParsableInteger interface {
+        uint8 | uint16 | uint32
+}
+
+func NewParser[T ParsableInteger](name string, val T, lookup map[T]string) *Parser[T] <span class="cov8" title="1">{
+        return &amp;Parser[T]{
+                name:   name,
+                v:      val,
+                lookup: lookup,
+        }
+}</span>
+
+type Parser[T ParsableInteger] struct {
+        name   string
+        v      T
+        lookup map[T]string
+}
+
+func (m *Parser[T]) SetVal(v T) *Parser[T] <span class="cov8" title="1">{
+        m.v = v
+        return m
+}</span>
+
+func (m *Parser[T]) GetVal() T <span class="cov8" title="1">{
+        return m.v
+}</span>
+
+func (m Parser[T]) String() string <span class="cov8" title="1">{
+        if r, ok := m.lookup[m.v]; ok </span><span class="cov8" title="1">{
+                return r
+        }</span>
+        <span class="cov8" title="1">return "unknow"</span>
+}
+
+func (m *Parser[T]) Parse(val string) *Parser[T] <span class="cov8" title="1">{
+        for i, v := range m.lookup </span><span class="cov8" title="1">{
+                if v == val </span><span class="cov8" title="1">{
+                        m.v = i
+                        return m
+                }</span>
+        }
+        // log.Error().Err(models.ErrInvalidParse).Str("name", m.name).Str("val", val).Msg("Invalid parse")
+        <span class="cov8" title="1">return m</span>
+}
+
+func NewConvert[T ParsableInteger](name string, val T, unit float64, min, max int, round bool) *Convert[T] <span class="cov8" title="1">{
+        return &amp;Convert[T]{
+                name:  name,
+                v:     val,
+                unit:  unit,
+                min:   min,
+                max:   max,
+                round: round,
+        }
+}</span>
+
+type Convert[T ParsableInteger] struct {
+        name  string
+        v     T
+        unit  float64
+        min   int
+        max   int
+        round bool
+        err   error
+}
+
+func (m *Convert[T]) Error() error <span class="cov8" title="1">{
+        var exception, invalid T
+        exception = 0
+        invalid = 0
+        exception -= 2
+        invalid -= 1
+
+        switch m.v </span>{
+        case exception:<span class="cov8" title="1">
+                return ErrException</span>
+        case invalid:<span class="cov8" title="1">
+                return ErrInvalid</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (m *Convert[T]) SetVal(v T) *Convert[T] <span class="cov8" title="1">{
+        m.v = v
+        m.err = m.Error()
+        return m
+}</span>
+
+func (m *Convert[T]) GetVal() T <span class="cov8" title="1">{
+        return m.v
+}</span>
+
+func (m *Convert[T]) Convert(val int) *Convert[T] <span class="cov8" title="1">{
+        m.v = 0
+        m.v -= 1 // underflow -&gt; 0xFF or 0xFFFF or 0xFFFFFFFF
+        if val &gt; m.max || val &lt; m.min </span><span class="cov8" title="1">{
+                // log.Error().Err(models.ErrInvalidConvert).Str("name", m.name).
+                //         Any("input", val).Int("min", m.min).Any("max", m.max).Msg("Invalid convert")
+                return m
+        }</span>
+        <span class="cov8" title="1">temp := float64(val) - float64(m.min)
+        temp /= m.unit
+        m.v = T(temp)
+        if m.round </span><span class="cov8" title="1">{
+                m.v = T(math.Round(temp))
+        }</span>
+        <span class="cov8" title="1">return m</span>
+}
+
+func (m Convert[T]) Calculate() *calculateValue <span class="cov8" title="1">{
+        value := &amp;calculateValue{
+                val:   0,
+                round: m.round,
+                err:   m.Error(),
+        }
+        if value.err != nil </span><span class="cov8" title="1">{
+                return value
+        }</span>
+
+        <span class="cov8" title="1">temp := float64(m.v)*m.unit + float64(m.min)
+        value.val = temp
+        if result := int(temp); result &gt; m.max </span><span class="cov8" title="1">{
+                value.err = ErrOverMaxSize
+                value.val = float64(m.max)
+        }</span>
+        <span class="cov8" title="1">return value</span>
+}
+
+type calculateValue struct {
+        val   float64
+        round bool
+        err   error
+}
+
+func (m calculateValue) Error() error <span class="cov8" title="1">{
+        return m.err
+}</span>
+
+func (m calculateValue) AsInt() int <span class="cov8" title="1">{
+        result := int(m.val)
+        if m.round </span><span class="cov8" title="1">{
+                result = int(math.Round(m.val))
+        }</span>
+        <span class="cov8" title="1">return result</span>
+}
+
+func (m calculateValue) AsFloat() float64 <span class="cov8" title="1">{
+        return math.Round(m.val*1000) / 1000
+}</span>
+
+func setBit(value uint8, bitPos uint8) uint8 <span class="cov8" title="1">{
+        return value | (1 &lt;&lt; bitPos)
+}</span>
+
+func getBit(value uint8, bitPos uint8) bool <span class="cov8" title="1">{
+        return (value &amp; (1 &lt;&lt; bitPos)) != 0
+}</span>
+
+func setByte(last uint8, value uint8, bitPos uint8, size uint8) uint8 <span class="cov8" title="1">{
+        mask := ((1 &lt;&lt; size) - 1) &lt;&lt; bitPos
+        clearedLast := last &amp; ^uint8(mask)
+        return clearedLast | ((value &amp; uint8((1&lt;&lt;size)-1)) &lt;&lt; bitPos)
+}</span>
+
+func getByte(value uint8, bitPos uint8, size uint8) uint8 <span class="cov8" title="1">{
+        mask := (1 &lt;&lt; size) - 1
+        return (value &gt;&gt; bitPos) &amp; uint8(mask)
+}</span>
+
+// / location related
+type coordinate struct {
+        v      float64
+        bitLoc uint8
+}
+
+func (m *coordinate) SetVal(val uint32, status uint8) *coordinate <span class="cov8" title="1">{
+        m.v = float64(val) / 1000000
+        if getBit(status, m.bitLoc) </span><span class="cov8" title="1">{
+                m.v *= -1
+        }</span>
+        <span class="cov8" title="1">return m</span>
+}
+
+func (m coordinate) Coordinate() float64 <span class="cov8" title="1">{
+        return m.v
+}</span>
+
+func (m *coordinate) Parse(coordinate float64) *coordinate <span class="cov8" title="1">{
+        m.v = coordinate
+        return m
+}</span>
+
+func (m *coordinate) GetVal(status uint8) (uint32, uint8) <span class="cov8" title="1">{
+        if m.v &lt; 0 </span><span class="cov8" title="1">{
+                status = setBit(status, m.bitLoc)
+                m.v *= -1
+        }</span>
+        <span class="cov8" title="1">result := m.v * 1000000
+        return uint32(result), status</span>
+}
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">package parser
+
+func VehicleStatus() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "vehicleStatus",
+                lookup: map[uint8]string{
+                        0x01: "start",
+                        0x02: "shutdown",
+                        0x03: "other",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func Charging() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "charging",
+                lookup: map[uint8]string{
+                        0x01: "parkingCharge",
+                        0x02: "driveCharge",
+                        0x03: "notCharged",
+                        0x04: "completed",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func OperatingMode() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "operatingMode",
+                lookup: map[uint8]string{
+                        0x01: "electric",
+                        0x02: "hybrid",
+                        0x03: "fuelOil",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func Speed() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "speed",
+                v:     value,
+                unit:  0.1, // 0,1 km/h
+                min:   0,
+                max:   220,
+                round: true,
+        }
+}</span>
+
+func Odometer() *Convert[uint32] <span class="cov8" title="1">{
+        value := uint32(0)
+        value -= 1
+        return &amp;Convert[uint32]{
+                name:  "odometer",
+                v:     value,
+                unit:  0.1, // 0,1 /km
+                min:   0,
+                max:   9999999,
+                round: false,
+        }
+}</span>
+
+func TotalVoltage() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "totalVoltage",
+                v:     value,
+                unit:  0.1, // 0,1 /V
+                min:   0,
+                max:   1000,
+                round: true,
+        }
+}</span>
+
+func TotalCurrent() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "totalCurrent",
+                v:     value,
+                unit:  0.1, // 0,1 /A
+                min:   -1000,
+                max:   1000,
+                round: true,
+        }
+}</span>
+
+func SoC() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "SoC",
+                v:     value,
+                unit:  1, // 1 /%
+                min:   0,
+                max:   100,
+                round: true,
+        }
+}</span>
+
+func DCDCStatus() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                v:    0xff,
+                name: "dcDCStatus",
+                lookup: map[uint8]string{
+                        0x01: "work",
+                        0x02: "break",
+                        0xfe: "exception",
+                        0xff: "invalid",
+                },
+        }
+}</span>
+
+func Insulator() *Convert[uint16] <span class="cov8" title="1">{
+        value := uint16(0)
+        value -= 1
+        return &amp;Convert[uint16]{
+                name:  "insulator",
+                v:     value,
+                unit:  0.1, // 1 /kOhm
+                min:   0,
+                max:   60000,
+                round: true,
+        }
+}</span>
+func Gear() *gear <span class="cov8" title="1">{
+        var g gear
+        return &amp;g
+}</span>
+
+type gear uint8
+
+func gearGear() *Parser[uint8] <span class="cov8" title="1">{
+        return &amp;Parser[uint8]{
+                name: "gear",
+                v:    0,
+                lookup: map[uint8]string{
+                        0b0000: "neutral",
+                        0b0001: "1st",
+                        0b0010: "2nd",
+                        0b0011: "3rd",
+                        0b0100: "4th",
+                        0b0101: "5th",
+                        0b0110: "6th",
+                        0b1101: "reverse",
+                        0b1110: "drive",
+                        0b1111: "park",
+                },
+        }
+}</span>
+
+func (m *gear) SetVal(val uint8) *gear <span class="cov8" title="1">{
+        *m = gear(val)
+        return m
+}</span>
+
+func (m *gear) GetVal() uint8 <span class="cov8" title="1">{
+        return uint8(*m)
+}</span>
+
+func (m gear) GetGear() string <span class="cov8" title="1">{
+        // gear at bit 0~3
+        return gearGear().SetVal(getByte(uint8(m), 0, 4)).String()
+}</span>
+
+func (m gear) GetBraking() bool <span class="cov8" title="1">{
+        return getBit(uint8(m), 4) // braking at bit 4
+}</span>
+
+func (m gear) GetPower() bool <span class="cov8" title="1">{
+        return getBit(uint8(m), 5) // power at bit 5
+}</span>
+
+func (m *gear) SetBraking(val bool) *gear <span class="cov8" title="1">{
+        if val </span><span class="cov8" title="1">{
+                *m = gear(setBit(uint8(*m), 4)) // braking at bit 4
+        }</span>
+        <span class="cov8" title="1">return m</span>
+}
+func (m *gear) SetPower(val bool) *gear <span class="cov8" title="1">{
+        if val </span><span class="cov8" title="1">{
+                *m = gear(setBit(uint8(*m), 5)) // power at bit 5
+        }</span>
+        <span class="cov8" title="1">return m</span>
+}
+func (m *gear) SetGear(val string) *gear <span class="cov8" title="1">{
+        v := gearGear().Parse(val).GetVal()
+        // gear at bit 0~3
+        *m = gear(setByte(uint8(*m), v, 0, 4))
+        return m
+}</span>
+
+func Throttle() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "throttle",
+                v:     value,
+                unit:  1, // 1 /%
+                min:   0,
+                max:   100,
+                round: true,
+        }
+}</span>
+
+func Brake() *Convert[uint8] <span class="cov8" title="1">{
+        value := uint8(0)
+        value -= 1
+        return &amp;Convert[uint8]{
+                name:  "brake",
+                v:     value,
+                unit:  1, // 1 /%
+                min:   0,
+                max:   100,
+                round: true,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package montor
+
+import (
+        "context"
+        "net"
+
+        "github.com/k2biru/montor/models"
+)
+
+type Pipeline interface {
+        ProcessRead(ctx context.Context) error
+        ProcessWrite(ctx context.Context, processData *models.ProcessData) error
+}
+
+type PipeHooks interface {
+        ProcesssHooks
+        PacketCodecHooks
+        FrameHandlerHooks
+}
+
+func NewPipeline(conn net.Conn, po PipeHooks) Pipeline <span class="cov8" title="1">{
+        return &amp;pipeline{
+                fh: NewFrameHandler(conn, po),
+                pc: NewPacketCodec(po),
+                mp: NewProcessor(po),
+        }
+}</span>
+
+type pipeline struct {
+        fh FrameHandler
+        pc PacketCodec
+        mp Processor
+}
+
+func (m *pipeline) ProcessWrite(ctx context.Context, processData *models.ProcessData) error <span class="cov8" title="1">{
+        if processData == nil || processData.Outgoing == nil </span><span class="cov8" title="1">{ // No need to reply, no follow -up processing
+                return nil
+        }</span>
+        <span class="cov8" title="1">pkt, err := m.pc.Encode(processData.Outgoing)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">return m.fh.Send(pkt)</span>
+}
+func (m *pipeline) ProcessRead(ctx context.Context) error <span class="cov8" title="1">{
+        pkt, err := m.fh.Recv(ctx)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">pd, err := m.pc.Decode(pkt)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">dm, err := m.mp.Process(ctx, pd)
+        if err != nil || dm.Outgoing == nil </span><span class="cov8" title="1">{
+                return err // If error or no reply (if no reply err and dm == nil)
+        }</span>
+
+        <span class="cov8" title="1">pkt, err = m.pc.Encode(dm.Outgoing)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">return m.fh.Send(pkt)</span>
+}
+</pre>
+		
+		<pre class="file" id="file42" style="display: none">package montor
+
+import (
+        "context"
+        "reflect"
+
+        "github.com/k2biru/montor/models"
+
+        "github.com/pkg/errors"
+)
+
+var (
+        ErrMsgInvalidResponseFlag = errors.New("msg response flag invalid")
+        ErrMsgNotSupportted       = errors.New("Msg is not supportted")
+        ErrNotAuthorized          = errors.New("Not authorized")
+)
+
+type Action struct {
+        ForceProcess bool
+        GenData      func() *models.ProcessData
+        Process      func(context.Context, *models.ProcessData) error
+}
+
+type ProcesssHooks interface {
+        GetProcess(id uint8) (*Action, error)
+        PreProcess(context.Context, models.GBT32960Msg) (context.Context, error)
+        PostDecode(models.GBT32960Msg)
+}
+
+type Processor interface {
+        Process(ctx context.Context, pkt *models.PacketData) (*models.ProcessData, error)
+}
+
+func NewProcessor(hooks ProcesssHooks) Processor <span class="cov8" title="1">{
+        return &amp;processor{
+                hooks: hooks,
+        }
+}</span>
+
+type processor struct {
+        hooks ProcesssHooks
+}
+
+func (m *processor) Process(ctx context.Context, pkt *models.PacketData) (*models.ProcessData, error) <span class="cov8" title="1">{
+        //is support?
+        cmdID := pkt.Header.CommandID
+        act, err := m.hooks.GetProcess(cmdID)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrMsgNotSupportted, "commandID 0x%02x", cmdID)
+        }</span>
+        // get act
+        <span class="cov8" title="1">genDataFn := act.GenData
+        if genDataFn == nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrMsgNotSupportted, "no action for commandID 0x%02x", cmdID)
+        }</span>
+        // prepare msg
+        <span class="cov8" title="1">data := genDataFn()
+        if data.Incoming == nil </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrMsgNotSupportted, "no parser for commandID 0x%02x", cmdID)
+        }</span>
+
+        // prepare incoming msg
+        <span class="cov8" title="1">in := data.Incoming
+
+        // decode incoming msg
+        err = in.Decode(pkt)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, errors.Wrap(err, "Fail to decode packet to gbt32960")
+        }</span>
+        // action in post decode
+        <span class="cov8" title="1">m.hooks.PostDecode(in)
+
+        // prepare outgoing msg
+        prepareReply(data)
+
+        // preprocess
+        ctx, err = m.hooks.PreProcess(ctx, data.Incoming)
+        if err != nil </span><span class="cov8" title="1">{
+                if data.Outgoing == nil || data.Outgoing.GetHeader() == nil </span><span class="cov8" title="1">{
+                        return data, nil
+                }</span>
+                <span class="cov8" title="1">data.Outgoing.GetHeader().Response = 0x02
+                return data, nil</span>
+        }
+
+        // should be process?
+        <span class="cov8" title="1">if responseCode := in.GetHeader().Response; responseCode != 0xFE &amp;&amp;
+                !act.ForceProcess </span><span class="cov8" title="1">{
+                return nil, errors.Wrapf(ErrMsgInvalidResponseFlag, "expect 0xFE got 0x%02x with force %t", responseCode, act.ForceProcess)
+        }</span>
+
+        // process
+        <span class="cov8" title="1">process := act.Process
+        if process == nil </span><span class="cov8" title="1">{
+                return data, nil
+        }</span>
+        <span class="cov8" title="1">err = process(ctx, data)
+        if err != nil </span><span class="cov8" title="1">{
+                return data, errors.Wrap(err, "Fail to process data")
+        }</span>
+
+        <span class="cov8" title="1">return data, nil</span>
+}
+
+func prepareReply(data *models.ProcessData) <span class="cov8" title="1">{
+        if reflect.TypeOf(data.Incoming) == reflect.TypeOf(data.Outgoing) </span><span class="cov8" title="1">{
+                data.Outgoing = data.Incoming.Copy()
+                data.Outgoing.GetHeader().Response = 0x01 // respose ok
+                return
+        }</span>
+        <span class="cov8" title="1">if reply, ok := data.Outgoing.(*models.MsgReply); ok </span><span class="cov8" title="1">{
+                // copy the header
+                inHeader := *data.Incoming.GetHeader()
+                reply.Header = &amp;inHeader
+                reply.Header.Response = 0x01 // response ok
+                if at, ok := data.Incoming.(models.GBT32960MsgTime); ok </span><span class="cov8" title="1">{
+                        reply.Time = at.GetTime()
+                }</span>
+        }
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
