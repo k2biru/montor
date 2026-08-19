@@ -1,6 +1,7 @@
 # montor
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/k2biru/montor.svg)](https://pkg.go.dev/github.com/k2biru/montor)
+[![Go CI](https://github.com/k2biru/montor/actions/workflows/go.yml/badge.svg)](https://github.com/k2biru/montor/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/k2biru/montor)](https://goreportcard.com/report/github.com/k2biru/montor)
 [![Coverage Status](https://img.shields.io/badge/Coverage-98.6%25-brightgreen.svg)](coverage.html)
 
