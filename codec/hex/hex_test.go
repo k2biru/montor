@@ -437,6 +437,14 @@ func TestWriteString(t *testing.T) {
 			},
 			want: Str2Byte("73BEA9"),
 		},
+		{
+			name: "case: invalid utf8",
+			args: args{
+				str: string([]byte{230, 181}),
+				n:   3,
+			},
+			want: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

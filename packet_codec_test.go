@@ -1,6 +1,7 @@
 package montor
 
 import (
+	"errors"
 	"testing"
 	"time"
 
@@ -65,6 +66,14 @@ func TestPacketCodec_Decode(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "case : decrypt unset error",
+			args: args{
+				time:    time.Date(2024, 1, 1, 1, 1, 1, 1, time.UTC),
+				payload: hex.Str2Byte("01FE3132333435363738390000000000000000020001FFF9"),
+			},
+			wantErr: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -75,9 +84,54 @@ func TestPacketCodec_Decode(t *testing.T) {
 			}
 			got, err := pc.Decode(tt.args.payload)
 			require.Equal(t, tt.wantErr, err != nil, err)
-			require.Equal(t, tt.want, got)
+			if !tt.wantErr {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
+}
+
+type mockCodecHooks struct {
+	decryptFn func(encType uint8, vin string, pkt []byte) ([]byte, error)
+}
+
+func (m *mockCodecHooks) Decrypt(encType uint8, vin string, pkt []byte) ([]byte, error) {
+	if m.decryptFn != nil {
+		return m.decryptFn(encType, vin, pkt)
+	}
+	return pkt, nil
+}
+
+func TestPacketCodec_DecodeWithDecrypt(t *testing.T) {
+	hooks := &mockCodecHooks{
+		decryptFn: func(encType uint8, vin string, pkt []byte) ([]byte, error) {
+			require.Equal(t, uint8(0x02), encType)
+			require.Equal(t, "123456789", vin)
+			return []byte("decrypted_data"), nil
+		},
+	}
+
+	payload := hex.Str2Byte("01FE31323334353637383900000000000000000200021122FD")
+	pc := NewPacketCodec(hooks)
+	pd, err := pc.Decode(payload)
+	require.NoError(t, err)
+	require.Equal(t, []byte("decrypted_data"), pd.Body)
+
+	// Decrypt error branch
+	errHooks := &mockCodecHooks{
+		decryptFn: func(encType uint8, vin string, pkt []byte) ([]byte, error) {
+			return nil, errors.New("decrypt error")
+		},
+	}
+	pcErr := NewPacketCodec(errHooks)
+	_, err = pcErr.Decode(payload)
+	require.Error(t, err)
+
+	// Header Decode error branch (valid BCC for short 3-byte payload: 0x01 ^ 0x02 = 0x03)
+	shortValidBCC := []byte{0x01, 0x02, 0x03}
+	pcHeaderErr := NewPacketCodec(nil)
+	_, err = pcHeaderErr.Decode(shortValidBCC)
+	require.Error(t, err)
 }
 
 func TestPacketCodec_Encode(t *testing.T) {
